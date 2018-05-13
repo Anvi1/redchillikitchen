@@ -1,0 +1,8 @@
+node_modules
+build
+npm-debug.log
+.env
+.DS_Store
+
+redChillyApp/redchillyapp/node_modules
+redChillyApp/redchillyserver/node_modules
