@@ -18,7 +18,7 @@ export class MyApp {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
-      this.router.navigate(['./chillymenu'])
+      this.router.navigate(['/chillymenu'])
     });
   }
 }
