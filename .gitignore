@@ -5,4 +5,5 @@ npm-debug.log
 .DS_Store
 
 redChillyApp/redchillyapp/node_modules
+redChillyApp/redchillyapp/platforms
 redChillyApp/redchillyserver/node_modules

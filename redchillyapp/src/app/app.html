@@ -1,1 +1,21 @@
-<router-outlet></router-outlet>
+<ion-menu [content]="chilliContent">
+    <ion-content class="chilly-margin-top-10">
+        <ion-list>
+            <button ion-item>
+                Home
+              </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<div #chilliContent>
+    <ion-header>
+        <div class="rck-header" menuToggle>
+            <div class="rck-hamburger-dimension"></div>
+            <div class="rck-hamburger-dimension"></div>
+            <div class="rck-hamburger-dimension"></div>
+        </div>
+    </ion-header>
+    <ion-content>
+        <router-outlet></router-outlet>
+    </ion-content>
+</div>
