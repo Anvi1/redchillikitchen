@@ -15,4 +15,23 @@ router.get('/', async(req, res, next) => {
     }
 });
 
+
+router.post('/', async(req, res, next) => {
+    const menulist = req.body;
+    if (!menulist || !menulist.length || !(menulist instanceof Array)) {
+        errors.message(res, 'Menu list is empty!!');
+        return;
+    }
+
+    const isValid = menulist
+        .every((i) => i)
+
+    try {
+        var menulist = await menuservice.addMultipleMenuItems(menulist);
+        success.success200(res, menulist);
+    } catch (error) {
+        errors.hasError500(req, res);
+    }
+});
+
 module.exports = router;

@@ -5,6 +5,12 @@ function hasError500(req, res) {
     return;
 }
 
+function message(res, message) {
+    res
+        .status(400)
+        .send({ error: message })
+}
+
 module.exports = {
     hasError500
 }
