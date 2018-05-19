@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 /**
  * Generated class for the UserDetailsPage page.
  *
@@ -13,11 +13,25 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 export class UserDetailsPage {
   public userDetails: FormGroup;
   constructor(private formBuilder: FormBuilder) {
+
+    this.userDetails = new FormGroup({
+      AdressLine1: new FormControl('AdressLine1'),
+      AdressLin21: new FormControl('AdressLine2'),
+      AdressLine3: new FormControl('AdressLine3'), 
+     
+  });
+
+
     this.userDetails = this.formBuilder.group({
       fullName: ['', Validators.required],
-      fullAdress: ['', Validators.required],
+      AdressLine1:['',Validators.required],
+      AdressLine2:['',Validators.required],
+      AdressLine3:['',Validators.required],
       contactNum: ['', Validators.required],
-      emailId: ['', Validators.required],
+      emailId: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ]))
     });
   }
 

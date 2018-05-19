@@ -7,21 +7,31 @@
 <ion-content padding>
     <form [formGroup]="userDetails" (ngSubmit)="logForm()">
         <ion-item>
-            <ion-label>Full Name</ion-label>
+            <ion-label floating>Full Name*</ion-label>
             <ion-input type="text" formControlName="fullName"></ion-input>
-        </ion-item>
+         </ion-item>
+       
         <ion-item>
-            <ion-label>Full Address</ion-label>
-            <ion-textarea formControlName="fullAdress"></ion-textarea>
-        </ion-item>
+            <ion-label floating>Flat Number and Buliding Name*</ion-label>
+            <ion-input type="text" formControlName="AdressLine1"></ion-input>
+        </ion-item>   
         <ion-item>
-            <ion-label>Contact Number</ion-label>
+                <ion-label floating>Society Name*</ion-label>
+                <ion-input type="text" formControlName="AdressLine2"></ion-input>
+        </ion-item> 
+        <ion-item>
+                <ion-label floating>Locality*</ion-label>
+                <ion-input type="text" formControlName="AdressLine3"></ion-input>
+        </ion-item> 
+       
+        <ion-item>
+            <ion-label floating>Contact Number*</ion-label>
             <ion-input type="number" formControlName="contactNum"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Email Id</ion-label>
+            <ion-label floating>Email Id*</ion-label>
             <ion-input type="email" formControlName="emailId"></ion-input>
         </ion-item>
-        <button ion-button type="submit" [disabled]="!userDetails.valid">Submit</button>
+        <button class="sbmtBtn" ion-button type="submit" [disabled]="!userDetails.valid">Submit</button>
     </form>
 </ion-content>
