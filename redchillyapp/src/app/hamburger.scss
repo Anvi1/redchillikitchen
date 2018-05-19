@@ -1,0 +1,30 @@
+.rck-hamburger {
+    background-color: white;
+    &:before {
+        top: -10px;
+        display: block;
+        content: "";
+        position: relative;
+        background-color: white;
+    }
+    &:after {
+        top: 10px;
+        display: block;
+        content: "";
+        position: relative;
+        background-color: white;
+    }
+}
+
+.rck-hamburger-dimension {
+    width: 30px;
+    height: 4px;
+    display: block;
+    background-color: white;
+    margin-top: 3px;
+}
+
+.rck-header {
+    background-color: #ff854e; //TODO: define this in variable after theme decision
+    padding: 10px;
+}

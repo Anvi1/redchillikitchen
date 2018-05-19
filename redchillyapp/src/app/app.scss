@@ -1,16 +1,38 @@
-// http://ionicframework.com/docs/theming/
+.chilli-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+}
 
+.chilli-row {
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+.chilli-center {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.chilli-align-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.chilli-no-margin {
+    margin: 0 !important;
+}
+
+.chilli-no-padding {
+    padding: 0 !important;
+}
+
+.chilly-margin-top-10 {
+    margin-top: 10px;
+}
+
+// Please add to these utils as we code
