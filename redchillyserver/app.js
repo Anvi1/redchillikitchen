@@ -1,14 +1,16 @@
-var express = require('express');
-var passport = require('passport');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const passport = require('passport');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var menuRoutes = require('./routes/menu');
+const doaConnect = require('./dao/dao.connection').connect;
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const menuRoutes = require('./routes/menu');
 
-var app = express();
+const app = express();
+doaConnect();
 
 app.use(logger('dev'));
 app.use(express.json());
