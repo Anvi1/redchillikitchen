@@ -9,6 +9,7 @@ router.get('/', async(req, res, next) => {
     var menulist;
     try {
         var menulist = await menuservice.getMenuList();
+        console.log(menulist)
         success.success200(res, menulist);
     } catch (error) {
         errors.hasError500(req, res);
@@ -28,8 +29,8 @@ router.post('/', async(req, res, next) => {
         .every((i) => i)
 
     try {
-        await menuservice.addMultipleMenuItems(menulist);
-        success.success200(res, menulist);
+        const isInserted = await menuservice.addMultipleMenuItems(menulist);
+        success.success200(res, isInserted);
     } catch (error) {
         errors.hasError500(req, res);
     }

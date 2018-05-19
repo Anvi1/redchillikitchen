@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const MenuItemClass = require('../models/menuitem').MenuItemClass;
 // dao.connect();
 
-function getMenuList() {
-    dao.getMenuItems();
-    // not finished yet
+async function getMenuList() {
+    const menulist = dao.getMenuItems();
+    return menulist;
 }
 
-function addMultipleMenuItems(menuItems) {
+async function addMultipleMenuItems(menuItems) {
     const menulist = menuItems.map((i) => {
         return new MenuItemClass(
             new mongoose.Types.ObjectId(),
@@ -20,7 +20,7 @@ function addMultipleMenuItems(menuItems) {
             i.version
         )
     })
-    dao.addMultipleMenuItems(menulist)
+    return dao.addMultipleMenuItems(menulist)
 }
 
 

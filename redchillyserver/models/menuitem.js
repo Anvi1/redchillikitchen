@@ -24,6 +24,7 @@ function MenuItemClass(_id, name, price, numbersAddedToCart, description, catego
     this.version = version;
 }
 
+
 MenuItemClass.prototype.validate = function(obj) {
     const _id = obj._id;
     const name = obj.name;

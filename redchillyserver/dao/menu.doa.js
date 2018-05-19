@@ -1,22 +1,14 @@
 const mongoose = require('mongoose');
 const MenuItems = require('../models/menuitem').model;
 
-
-
-function getMenuItems() {
-    MenuItems.find({}, (err, result) => {
-        console.log(err, result, "result");
-    })
+async function getMenuItems() {
+    const menulist = await MenuItems.find({});
+    return menulist;
 }
 
-function addMultipleMenuItems(menuItems /*Array of item*/ ) {
-    MenuItems.collection.insert(menuItems, (err, docs) => {
-        if (err) {
-
-        } else {
-            console.log(docs)
-        }
-    })
+async function addMultipleMenuItems(menuItems /*Array of item*/ ) {
+    const isInserted = await MenuItems.collection.insert(menuItems);
+    return isInserted;
 }
 
 

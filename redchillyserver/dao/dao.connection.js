@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const config = require('./connectionconfig').config;
 
 function connect() {
-    mongoose.connect('LOL-WILL-NOT-UPDATE-IN-GIT');
+    mongoose.connect(config.connectionURI);
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function() {
