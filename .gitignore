@@ -6,4 +6,4 @@ npm-debug.log
 
 redChillyApp/redchillyapp/node_modules
 redChillyApp/redchillyserver/node_modules
-redChillyApp/redchillyserver/dao/connectionconfig.js
+redchillyserver/dao/connectionutil.js
