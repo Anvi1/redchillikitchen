@@ -11,7 +11,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: 'user-details.html',
 })
 export class UserDetailsPage {
-  private userDetails: FormGroup;
+  public userDetails: FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.userDetails = this.formBuilder.group({
       fullName: ['', Validators.required],

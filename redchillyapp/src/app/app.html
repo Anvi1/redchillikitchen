@@ -1,14 +1,17 @@
 <ion-menu [content]="chilliContent">
     <ion-content class="chilly-margin-top-10">
         <ion-list>
-            <button ion-item>
+            <button ion-item routerLink="/chillyhome" menuClose>
                 Home
               </button>
-              <a routerLink="/userdetails">User Details</a>
+            <button ion-item routerLink="/userdetails" menuClose>
+               User Details
+              </button>
+
         </ion-list>
     </ion-content>
 </ion-menu>
-<div #chilliContent>
+<div #chilliContent class="chilly-full-height">
     <ion-header>
         <div class="rck-header" menuToggle>
             <div class="rck-hamburger-dimension"></div>

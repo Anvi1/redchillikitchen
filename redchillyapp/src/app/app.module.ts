@@ -11,6 +11,7 @@ import { PagesModule } from '../pages/components.module';
 /* Custom Imports */
 import { RouterModule } from '@angular/router';
 import { appRoutes } from "./app.routes";
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { appRoutes } from "./app.routes";
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ]
 })
 export class AppModule { }
