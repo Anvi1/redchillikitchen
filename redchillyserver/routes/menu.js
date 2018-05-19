@@ -23,11 +23,12 @@ router.post('/', async(req, res, next) => {
         return;
     }
 
+    //TODO: Validation 
     const isValid = menulist
         .every((i) => i)
 
     try {
-        var menulist = await menuservice.addMultipleMenuItems(menulist);
+        await menuservice.addMultipleMenuItems(menulist);
         success.success200(res, menulist);
     } catch (error) {
         errors.hasError500(req, res);

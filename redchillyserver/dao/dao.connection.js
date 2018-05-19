@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 function connect() {
     mongoose.connect('LOL-WILL-NOT-UPDATE-IN-GIT');
     const db = mongoose.connection;

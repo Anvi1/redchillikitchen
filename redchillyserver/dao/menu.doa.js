@@ -21,5 +21,6 @@ function addMultipleMenuItems(menuItems /*Array of item*/ ) {
 
 
 module.exports = {
-    getMenuItems
+    getMenuItems,
+    addMultipleMenuItems
 }

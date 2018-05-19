@@ -12,5 +12,6 @@ function message(res, message) {
 }
 
 module.exports = {
-    hasError500
+    hasError500,
+    message
 }
