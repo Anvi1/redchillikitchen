@@ -23,7 +23,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    PagesModule
+    PagesModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -33,7 +33,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ]
 })
 export class AppModule { }
