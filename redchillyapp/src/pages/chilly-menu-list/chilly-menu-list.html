@@ -1,4 +1,12 @@
 <!-- Generated template for the ChillyHomeComponent component -->
-<li *ngFor="let menuitem of menulist">
-    {{menuitem.description}}
-</li>
+<ion-list>
+    <div *ngFor="let categoryObj of menulistCategories">
+        <ion-item text-wrap text-uppercase (click)="categoryObj.isHidden = !categoryObj.isHidden">
+            <h1>{{categoryObj.category}}</h1>
+        </ion-item>
+        <ion-list [hidden]="categoryObj.isHidden">
+            <ion-item no-lines padding-left *ngFor="let item of findItemOfCategory(categoryObj.category)">{{item.description}}</ion-item>
+        </ion-list>
+    </div>
+
+</ion-list>

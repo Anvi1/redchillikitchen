@@ -21,6 +21,10 @@ export class ChillyMenuList implements OnInit {
   }
   // haha looks ugly now :(
   menulist: Array<MenuItem>;
+  menulistCategories: Array<{
+    category: string,
+    isHidden: boolean
+  }>;
 
   constructor(private chillyMenuList: ChillyMenuListProvider) {
   }
@@ -31,8 +35,22 @@ export class ChillyMenuList implements OnInit {
     this.chillyMenuList
       .getMenuList()
       .subscribe(i => {
+        this.menulistCategories = i
+          .map(mi => {
+            const category = mi.category;
+            const isHidden = true;
+            return {
+              category,
+              isHidden
+            }
+          })
+          .filter((fi, index, arr) => arr.findIndex(ffi => ffi.category === fi.category) === index);
         this.menulist = i;
       })
+  }
+
+  findItemOfCategory(category: string): Array<MenuItem> {
+    return this.menulist.filter(fi => fi.category === category);
   }
 
 }
