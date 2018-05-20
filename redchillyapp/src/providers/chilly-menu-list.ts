@@ -18,8 +18,9 @@ export class ChillyMenuListProvider {
   }
 
   getMenuList(): Observable<Array<MenuItem>> {
-    return Observable.of([new MenuItem(
-      'adsf', "dalTadka", 240, 0, 'delicious'
-    )]);
+    return Observable.of([
+      new MenuItem('adsf', "dalTadka", 240, 0, 'delicious', "MAIN_COURSE", true)
+
+    ]);
   }
 }
