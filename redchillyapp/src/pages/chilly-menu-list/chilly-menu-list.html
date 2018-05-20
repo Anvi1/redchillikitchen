@@ -1,12 +1,25 @@
 <!-- Generated template for the ChillyHomeComponent component -->
 <ion-list>
     <div *ngFor="let categoryObj of menulistCategories">
-        <ion-item text-wrap text-uppercase (click)="categoryObj.isHidden = !categoryObj.isHidden">
+        <ion-item text-wrap text-capitalize (click)="categoryObj.isHidden = !categoryObj.isHidden">
             <h1>{{categoryObj.category}}</h1>
         </ion-item>
         <ion-list [hidden]="categoryObj.isHidden">
-            <ion-item no-lines padding-left *ngFor="let item of findItemOfCategory(categoryObj.category)">{{item.description}}</ion-item>
+            <ion-item no-lines padding-left *ngFor="let item of findItemOfCategory(categoryObj.category)">
+                <div class="chilly-item-container chilli-flex chilli-row">
+                    <div class="chilli-item-details">
+                        <div>
+                            {{item.name}}
+                        </div>
+                        <div>
+                            {{item.description}}
+                        </div>
+                    </div>
+                    <div class="chilly-add-container">
+
+                    </div>
+                </div>
+            </ion-item>
         </ion-list>
     </div>
-
 </ion-list>
