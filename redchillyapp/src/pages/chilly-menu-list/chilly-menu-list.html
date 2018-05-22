@@ -2,7 +2,9 @@
 <ion-list>
     <div *ngFor="let categoryObj of menulistCategories">
         <ion-item text-wrap text-capitalize (click)="categoryObj.isHidden = !categoryObj.isHidden">
-            <h1>{{categoryObj.category}}</h1>
+            <div class="chilli-flex chilli-row chilly-space-between chilli-align-center">
+                <h1>{{categoryObj.category}}</h1><i class="down-arrow"></i>
+            </div>
         </ion-item>
         <ion-list [hidden]="categoryObj.isHidden">
             <ion-item no-lines padding-left text-wrap *ngFor="let item of findItemOfCategory(categoryObj.category)">
@@ -10,6 +12,9 @@
                     <div class="chilli-item-details">
                         <div class="chilli-item-name">
                             {{item.name}}
+                        </div>
+                        <div class="chilli-item-price">
+                            {{item.price | currency:"₹":0}}
                         </div>
                         <div class="chilli-item-description">
                             {{item.description}}
