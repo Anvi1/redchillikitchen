@@ -29,7 +29,13 @@ export class ChillyMenuList implements OnInit {
   constructor(private chillyMenuList: ChillyMenuListProvider) {
   }
 
+  addTo(item) {
+    item.numbersAddedToCart++;
+  }
 
+  removeFrom(item) {
+    item.numbersAddedToCart--;
+  }
 
   getMenuList() {
     this.chillyMenuList

@@ -5,18 +5,25 @@
             <h1>{{categoryObj.category}}</h1>
         </ion-item>
         <ion-list [hidden]="categoryObj.isHidden">
-            <ion-item no-lines padding-left *ngFor="let item of findItemOfCategory(categoryObj.category)">
+            <ion-item no-lines padding-left text-wrap *ngFor="let item of findItemOfCategory(categoryObj.category)">
                 <div class="chilly-item-container chilli-flex chilli-row">
                     <div class="chilli-item-details">
-                        <div>
+                        <div class="chilli-item-name">
                             {{item.name}}
                         </div>
-                        <div>
+                        <div class="chilli-item-description">
                             {{item.description}}
                         </div>
                     </div>
                     <div class="chilly-add-container">
-
+                        <button ion-button round outline class="chilli-no-padding">
+                          <span class="chilli-remove chilli-center chilli-row chilli-flex chilli-align-center" (click)="removeFrom(item)" *ngIf="item.numbersAddedToCart">-</span>
+                          <span class="chilli-add-text" (click)="addTo(item)">
+                            <span *ngIf="!item.numbersAddedToCart">Add</span>
+                            <span *ngIf="item.numbersAddedToCart">{{item.numbersAddedToCart}}</span>
+                          </span>
+                          <span class="chilli-add chilli-center chilli-row chilli-flex chilli-align-center" (click)="addTo(item)" >+</span>
+                          </button>
                     </div>
                 </div>
             </ion-item>

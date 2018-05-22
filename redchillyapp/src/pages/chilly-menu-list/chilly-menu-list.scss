@@ -1,3 +1,12 @@
 chilly-menu-list {
-
+    .chilli-add,
+    .chilli-remove {
+        width: 20px;
+        height: 100%;
+        background-color: #48aaff;
+        color: white
+    }
+    .chilli-add-text {
+        padding: 0 10px;
+    }
 }
