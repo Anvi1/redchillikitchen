@@ -1,3 +1,4 @@
 U001 - kitchen menu items UI
 U002 - kitchen menu items API
 U003 - initital side menu skeleton
+U005 - adding kitchen menu in UI
