@@ -11,6 +11,7 @@ import { PagesModule } from '../pages/components.module';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from "./app.routes";
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
       { enableTracing: true } // <-- debugging purposes only
     ),
     PagesModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

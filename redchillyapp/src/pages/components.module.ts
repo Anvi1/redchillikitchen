@@ -5,14 +5,18 @@ import { ChillyMenuList } from './chilly-menu-list/chilly-menu-list';
 import { ChillyMenuListProvider } from '../providers/chilly-menu-list';
 import { IonicModule } from 'ionic-angular';
 import { ChilliCartComponent } from './chilli-cart/chilli-cart';
-import { RouteSharingService } from '../services/service.pathconfig';
+import { RouteSharingService, ApiMainService, ApiConfigService, ApiHttpService } from '../services/service.pathconfig';
+import { HttpModule, Http } from '@angular/http';
 @NgModule({
   declarations: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent],
   imports: [CommonModule, IonicModule],
   exports: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent],
   providers: [
     ChillyMenuListProvider,
-    RouteSharingService
+    RouteSharingService,
+    ApiMainService,
+    ApiConfigService,
+    ApiHttpService
   ]
 })
 export class PagesModule { }

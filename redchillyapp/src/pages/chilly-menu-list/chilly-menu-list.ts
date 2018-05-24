@@ -3,8 +3,15 @@ import { MenuItem } from '../../models/menuitem';
 import { ChillyMenuListProvider } from '../../providers/chilly-menu-list';
 
 import 'rxjs/operators/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
+
 import { Router } from '@angular/router';
 import { RouteSharingService } from '../../services/service.pathconfig';
+import { IfObservable } from 'rxjs/observable/IfObservable';
+import { Observable } from 'rxjs/Observable';
+import { ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the ChillyMenuList component.
@@ -17,6 +24,7 @@ import { RouteSharingService } from '../../services/service.pathconfig';
   templateUrl: 'chilly-menu-list.html'
 })
 export class ChillyMenuList implements OnInit {
+
   ngOnInit(): void {
     const sharedData = this.sharedData.getSharedData('chillymenu')
     this.getMenuList(sharedData);
@@ -33,7 +41,8 @@ export class ChillyMenuList implements OnInit {
   constructor(
     private chillyMenuList: ChillyMenuListProvider,
     private router: Router,
-    private sharedData: RouteSharingService
+    private sharedData: RouteSharingService,
+    public toastCtrl: ToastController
   ) {
   }
 
@@ -48,34 +57,55 @@ export class ChillyMenuList implements OnInit {
   }
 
   getMenuList(hasSharedData: Array<MenuItem>) {
+    let toast = this.toastCtrl.create({
+      message: 'Our servers are not reachable! Please retry',
+      showCloseButton: true,
+      closeButtonText: "Retry",
+      position: 'bottom'
+    });
+    toast.onDidDismiss(() => {
+      this.getMenuList(hasSharedData);
+    });
+
     this.chillyMenuList
       .getMenuList()
-      .subscribe(i => {
-        this.menulistCategories = i
-          .map(mi => {
-            const category = mi.category;
-            const isHidden = true;
-            const addedItems = 0;
-            return {
-              category,
-              isHidden,
-              addedItems
-            }
-          })
-          .filter((fi, index, arr) => arr.findIndex(ffi => ffi.category === fi.category) === index);
-        this.menulist = i.map(li => {
-          li.numbersAddedToCart = 0
-          if (hasSharedData
-            && hasSharedData.length) {
-            const found = hasSharedData.find(fi => fi.id == li.id);
-            if (found) {
-              li.numbersAddedToCart = found.numbersAddedToCart;
-            }
-          }
-          return li;
-        });
-        this.willShowCartButton();
+      .catch((err: any, caught: Observable<MenuItem[]>) => {
+
+        toast.present();
+        return Observable.of(null);
       })
+      .filter(fi => !!fi)
+      .subscribe(menulist => {
+        this.initMenu(hasSharedData, menulist);
+      })
+
+  }
+  initMenu(hasSharedData, i: Array<MenuItem>): void {
+    this.menulistCategories = i
+      .map(mi => {
+        const category = mi.category;
+        const isHidden = true;
+        const addedItems = 0;
+        return {
+          category,
+          isHidden,
+          addedItems
+        }
+      })
+      .filter((fi, index, arr) => arr.findIndex(ffi => ffi.category === fi.category) === index);
+
+    this.menulist = i.map(li => {
+      li.numbersAddedToCart = 0
+      if (hasSharedData
+        && hasSharedData.length) {
+        const found = hasSharedData.find(fi => fi.id == li.id);
+        if (found) {
+          li.numbersAddedToCart = found.numbersAddedToCart;
+        }
+      }
+      return li;
+    });
+    this.willShowCartButton();
   }
 
   findItemOfCategory(category: string): Array<MenuItem> {

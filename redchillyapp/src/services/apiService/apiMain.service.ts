@@ -5,22 +5,26 @@ import { LocalstorageService } from '../utilService/localstorage.service';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class ApiMainService {   
-    constructor(
-        private apiConfigService: ApiConfigService,
-        private apiHttpService: ApiHttpService,
-        private localStorageService: LocalstorageService) { }
-   
-     authenticateUser(paylaodObj): Promise<any> {
-        const promise = new Promise((resolve, reject) => {
-            this.apiHttpService
-                .REQUEST(this.apiConfigService.apiEndPointObj['autenticateUser'], paylaodObj)
-                .then(response => {                 
-                    resolve('success login');
-                }, error => {
-                    reject(error);
-                });
+export class ApiMainService {
+  constructor(
+    private apiConfigService: ApiConfigService,
+    private apiHttpService: ApiHttpService) { }
+
+  authenticateUser(paylaodObj): Promise<any> {
+    const promise = new Promise((resolve, reject) => {
+      this.apiHttpService
+        .REQUEST(this.apiConfigService.apiEndPointObj['autenticateUser'], paylaodObj)
+        .then(response => {
+          resolve('success login');
+        }, error => {
+          reject(error);
         });
-        return promise;
-    }
+    });
+    return promise;
+  }
+
+  getMenuList() {
+    return this.apiHttpService
+      .REQUEST(this.apiConfigService.apiEndPointObj['getMenuList']);
+  }
 }

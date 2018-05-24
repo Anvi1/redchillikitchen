@@ -11,7 +11,7 @@ const menuRoutes = require('./routes/menu');
 const orderRoutes = require('./routes/order');
 
 const app = express();
-const env = process.env.NODE_ENV;
+const env = `development`;
 
 if (env == 'development') {
     console.log("Dev is cooking!")
