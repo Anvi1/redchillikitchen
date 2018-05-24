@@ -4,6 +4,8 @@ import { ChillyMenuListProvider } from '../../providers/chilly-menu-list';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/operators/map';
+import { Router } from '@angular/router';
+import { RouteSharingService } from '../../services/service.pathconfig';
 
 /**
  * Generated class for the ChillyMenuList component.
@@ -26,7 +28,11 @@ export class ChillyMenuList implements OnInit {
     isHidden: boolean
   }>;
 
-  constructor(private chillyMenuList: ChillyMenuListProvider) {
+  constructor(
+    private chillyMenuList: ChillyMenuListProvider,
+    private router: Router,
+    private sharedData: RouteSharingService
+  ) {
   }
 
   addTo(item) {
@@ -57,6 +63,13 @@ export class ChillyMenuList implements OnInit {
 
   findItemOfCategory(category: string): Array<MenuItem> {
     return this.menulist.filter(fi => fi.category === category);
+  }
+
+  moveToCart() {
+    const toRoute = 'chillycart';
+    const addedMenuItems = this.menulist.filter(i => i.numbersAddedToCart > 0);
+    this.sharedData.addSharedData(toRoute, addedMenuItems);
+    this.router.navigate([toRoute]);
   }
 
 }

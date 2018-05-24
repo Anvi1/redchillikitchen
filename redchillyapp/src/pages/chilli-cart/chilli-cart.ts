@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RouteSharingService } from '../../services/service.pathconfig';
 
 /**
  * Generated class for the ChilliCartComponent component.
@@ -10,12 +12,16 @@ import { Component } from '@angular/core';
   selector: 'chilli-cart',
   templateUrl: 'chilli-cart.html'
 })
-export class ChilliCartComponent {
+export class ChilliCartComponent implements OnInit {
 
-  text: string;
 
-  constructor() {
-    this.text = 'Hello World';
+  cartItems: string;
+
+  constructor(
+    private sharedData: RouteSharingService,
+  ) { }
+
+  ngOnInit(): void {
+    this.cartItems = this.sharedData.getSharedData('chillycart');
   }
-
 }

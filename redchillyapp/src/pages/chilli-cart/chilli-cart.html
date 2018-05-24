@@ -1,4 +1,8 @@
 <!-- Generated template for the ChilliCartComponent component -->
 <div>
-  {{text}}
+    <ion-list>
+        <ion-item *ngFor="let item of cartItems">
+            {{item|json}}
+        </ion-item>
+    </ion-list>
 </div>
