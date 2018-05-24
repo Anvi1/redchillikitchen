@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const menuItem = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    name: { type: String, default: '' },
+    name: { type: String, default: '', index: { unique: true } },
     price: { type: Number },
     description: { type: String, default: '' },
     category: { type: String, default: '' },

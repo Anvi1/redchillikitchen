@@ -31,6 +31,11 @@ router.post('/', async(req, res, next) => {
         const isInserted = await menuservice.addMultipleMenuItems(menulist);
         success.success200(res, isInserted);
     } catch (error) {
+        const hasUniqueError = error.code === 11000;
+        if (hasUniqueError) {
+            errors.message(res, "You cannot have two items having same name!")
+            return;
+        }
         errors.hasError500(req, res);
     }
 });
