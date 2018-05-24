@@ -1,8 +1,36 @@
 <!-- Generated template for the ChilliCartComponent component -->
 <div>
+    <h1 padding>Your Cart</h1>
     <ion-list>
         <ion-item *ngFor="let item of cartItems">
-            {{item|json}}
+            <div class="chilly-item-container chilli-flex chilli-row">
+                <div class="chilli-item-details chilli-row chilli-flex chilly-space-between">
+                    <div class="chilli-item-name">
+                        {{item.name}}
+                    </div>
+                    <div class="chilli-item-price">
+                        {{item.price | currency:"₹":0}}
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item>
+            <div class="chilli-item-details chilli-row chilli-flex chilly-space-between">
+                <div class="chilli-item-name">
+                    <div>SubTotal</div>
+                </div>
+                <div class="chilli-item-price">
+                    <div>{{subTotal | currency:"₹":0}}</div>
+                </div>
+            </div>
+            <div class="chilli-item-details chilli-row chilli-flex chilly-space-between">
+                <div class="chilli-item-name">
+                    <div>Taxes and charges</div>
+                </div>
+                <div class="chilli-item-price">
+                    <div>{{45 | currency:"₹":0}}</div>
+                </div>
+            </div>
         </ion-item>
     </ion-list>
 </div>
