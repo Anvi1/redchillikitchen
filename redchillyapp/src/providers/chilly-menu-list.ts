@@ -19,7 +19,22 @@ export class ChillyMenuListProvider {
   }
 
   getMenuList(): Observable<Array<MenuItem>> {
-    const menulist = this.apiMainService.getMenuList();
+    const menulist = this.apiMainService
+      .getMenuList()
+      .then((resArr) => {
+        if (!resArr
+          || !resArr.length) {
+          return [];
+        }
+
+        return resArr.map(mi => {
+          return {
+            id: mi._id,
+            ...mi
+          }
+        })
+      });
+
     return Observable.fromPromise(menulist);
   }
 }

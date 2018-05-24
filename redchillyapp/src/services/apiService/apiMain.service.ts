@@ -3,6 +3,7 @@ import { ApiConfigService } from './apiConfig.service';
 import { ApiHttpService } from './apiHttp.service';
 import { LocalstorageService } from '../utilService/localstorage.service';
 import 'rxjs/add/operator/toPromise';
+import { MenuItem } from '../../models/menuitem';
 
 @Injectable()
 export class ApiMainService {
@@ -25,6 +26,6 @@ export class ApiMainService {
 
   getMenuList() {
     return this.apiHttpService
-      .REQUEST(this.apiConfigService.apiEndPointObj['getMenuList']);
+      .REQUEST(this.apiConfigService.apiEndPointObj['getMenuList'])
   }
 }

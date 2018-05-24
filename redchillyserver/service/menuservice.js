@@ -23,9 +23,15 @@ async function addMultipleMenuItems(menuItems) {
     return dao.addMultipleMenuItems(menulist)
 }
 
+async function deleteMenuList() {
+    const menulist = dao.deleteMenuList();
+    return menulist;
+}
+
 
 
 module.exports = {
     getMenuList,
-    addMultipleMenuItems
+    addMultipleMenuItems,
+    deleteMenuList
 }

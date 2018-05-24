@@ -40,4 +40,15 @@ router.post('/', async(req, res, next) => {
     }
 });
 
+router.delete('/', async(req, res, next) => {
+    var menulist;
+    try {
+        var menulist = await menuservice.deleteMenuList();
+        success.success200(res, menulist);
+    } catch (error) {
+        console.log(error)
+        errors.hasError500(req, res);
+    }
+});
+
 module.exports = router;
