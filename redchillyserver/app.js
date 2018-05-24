@@ -8,6 +8,7 @@ const doaConnect = require('./dao/dao.connection').connect;
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const menuRoutes = require('./routes/menu');
+const orderRoutes = require('./routes/order');
 
 const app = express();
 doaConnect();
@@ -21,6 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/menu', menuRoutes);
-
+app.use('/api/order', orderRoutes);
 
 module.exports = app;
