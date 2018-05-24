@@ -1,8 +1,5 @@
-import { OnInit } from '@angular/core';
-
 export class ApiConfigService {
-  private baseUrl: string ="";
-
+  private baseUrl: string = "";
 
   apiEndPointObj = {};
   constructor() {

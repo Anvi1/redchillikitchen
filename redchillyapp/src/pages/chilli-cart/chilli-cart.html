@@ -1,0 +1,55 @@
+<!-- Generated template for the ChilliCartComponent component -->
+<div padding-bottom>
+    <h1 padding-left>Your Cart</h1>
+    <ion-list padding-bottom>
+        <ion-item *ngFor="let item of cartItems">
+            <div class="chilly-item-container chilli-flex chilli-row">
+                <div class="chilli-item-details chilli-row chilli-flex chilly-space-between">
+                    <div class="chilli-item-name">
+                        {{item.name}}
+                    </div>
+                    <div class="chilli-item-price">
+                        {{item.price | currency:"₹":0}}
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item>
+            <div class="chilli-item-details chilli-row chilli-flex chilly-space-between">
+                <div class="chilli-item-name">
+                    <div>SubTotal</div>
+                </div>
+                <div class="chilli-item-price">
+                    <div>{{subTotal | currency:"₹":0}}</div>
+                </div>
+            </div>
+            <div class="chilli-item-details chilli-row chilli-flex chilly-space-between">
+                <div class="chilli-item-name">
+                    <div>Taxes and charges</div>
+                </div>
+                <div class="chilli-item-price">
+                    <div>{{45 | currency:"₹":0}}</div>
+                </div>
+            </div>
+            <div class="chilli-item-details chilli-row chilli-flex chilly-space-between">
+                <div class="chilli-item-name">
+                    <div>Grand Total</div>
+                </div>
+                <div class="chilli-item-price">
+                    <div>{{45 | currency:"₹":0}}</div>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item padding>
+
+        </ion-item>
+    </ion-list>
+</div>
+<ion-footer>
+    <div class="chilli-fixed chilli-bottom view-menu chilli-flex chilli-start" (click)="goBackToMenu()">
+        <button margin ion-button color="secondary" mode="md">
+          <ion-icon  name="arrow-round-back" mode="md"></ion-icon>
+          <span margin-left>Edit Order</span> 
+        </button>
+    </div>
+</ion-footer>

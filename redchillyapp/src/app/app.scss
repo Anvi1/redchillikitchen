@@ -29,6 +29,12 @@
     justify-content: flex-end;
 }
 
+.chilli-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: start;
+}
+
 .chilli-align-center {
     -webkit-box-align: center;
     -ms-flex-align: center;

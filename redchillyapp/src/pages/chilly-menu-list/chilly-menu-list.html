@@ -3,7 +3,11 @@
     <div *ngFor="let categoryObj of menulistCategories">
         <ion-item text-wrap text-capitalize (click)="categoryObj.isHidden = !categoryObj.isHidden">
             <div class="chilli-flex chilli-row chilly-space-between chilli-align-center">
-                <h1>{{categoryObj.category}}</h1><i class="down-arrow"></i>
+                <h1>{{categoryObj.category}}</h1>
+                <span class="chilli-flex chilli-row chilli-align-center">
+                 <ion-badge margin-right [hidden]="categoryObj.addedItems==0">{{categoryObj.addedItems}}</ion-badge>
+                  <i class="down-arrow"></i>
+                </span>
             </div>
         </ion-item>
         <ion-list [hidden]="categoryObj.isHidden">
@@ -35,8 +39,8 @@
         </ion-list>
     </div>
 </ion-list>
-<ion-footer>
-    <div class="chilli-fixed chilli-bottom view-cart chilli-flex chilli-end">
+<ion-footer *ngIf="hasAddedSomeFood">
+    <div class="chilli-fixed chilli-bottom view-cart chilli-flex chilli-end" (click)="moveToCart()">
         <button margin ion-button color="secondary" mode="md">
           <span>View Cart</span> 
           <ion-icon margin-left name="arrow-round-forward" mode="md"></ion-icon>
