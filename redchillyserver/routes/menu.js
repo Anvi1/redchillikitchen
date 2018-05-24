@@ -9,7 +9,6 @@ router.get('/', async(req, res, next) => {
     var menulist;
     try {
         var menulist = await menuservice.getMenuList();
-        console.log(menulist)
         success.success200(res, menulist);
     } catch (error) {
         errors.hasError500(req, res);
