@@ -5,7 +5,7 @@
             <div class="chilli-flex chilli-row chilly-space-between chilli-align-center">
                 <h1>{{categoryObj.category}}</h1>
                 <span class="chilli-flex chilli-row chilli-align-center">
-                 <ion-badge margin-right [hidden]="findAddedNumbersToCart(categoryObj.category)==0">{{findAddedNumbersToCart(categoryObj.category)}}</ion-badge>
+                 <ion-badge margin-right [hidden]="categoryObj.addedItems==0">{{categoryObj.addedItems}}</ion-badge>
                   <i class="down-arrow"></i>
                 </span>
             </div>

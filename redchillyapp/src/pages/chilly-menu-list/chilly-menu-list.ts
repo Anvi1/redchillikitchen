@@ -25,7 +25,8 @@ export class ChillyMenuList implements OnInit {
   menulist: Array<MenuItem>;
   menulistCategories: Array<{
     category: string,
-    isHidden: boolean
+    isHidden: boolean,
+    addedItems: number,
   }>;
   hasAddedSomeFood: boolean;
 
@@ -54,9 +55,11 @@ export class ChillyMenuList implements OnInit {
           .map(mi => {
             const category = mi.category;
             const isHidden = true;
+            const addedItems = 0;
             return {
               category,
-              isHidden
+              isHidden,
+              addedItems
             }
           })
           .filter((fi, index, arr) => arr.findIndex(ffi => ffi.category === fi.category) === index);
@@ -81,7 +84,9 @@ export class ChillyMenuList implements OnInit {
 
   findAddedNumbersToCart(category) {
     const categoryList = this.findItemOfCategory(category);
-    return categoryList.filter(fi => fi.numbersAddedToCart > 0).length;
+    return categoryList
+      .map(fi => fi.numbersAddedToCart)
+      .reduce((now, next) => now + next, 0);
   }
 
   moveToCart() {
@@ -94,6 +99,10 @@ export class ChillyMenuList implements OnInit {
   willShowCartButton() {
     const hasAddedSomeFood = this.menulist.filter(i => i.numbersAddedToCart > 0).length;
     this.hasAddedSomeFood = hasAddedSomeFood > 0;
+    this.menulistCategories
+      .forEach(mi => {
+        mi.addedItems = this.findAddedNumbersToCart(mi.category);
+      })
   }
 
 }
