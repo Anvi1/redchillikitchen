@@ -11,6 +11,17 @@ const menuRoutes = require('./routes/menu');
 const orderRoutes = require('./routes/order');
 
 const app = express();
+const env = process.env.NODE_ENV;
+
+if (env == 'development') {
+    console.log("Dev is cooking!")
+    app.use((req, res, next) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+}
+
 doaConnect();
 
 app.use(logger('dev'));

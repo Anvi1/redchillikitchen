@@ -14,10 +14,10 @@ async function addMultipleMenuItems(menuItems) {
             new mongoose.Types.ObjectId(),
             i.name,
             i.price,
-            i.numbersAddedToCart,
             i.description,
             i.category,
-            i.version
+            i.version,
+            i.isVeg
         )
     })
     return dao.addMultipleMenuItems(menulist)

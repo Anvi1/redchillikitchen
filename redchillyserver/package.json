@@ -1,19 +1,19 @@
 {
-  "name": "redchillyserver",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
-  "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "mongoose": "^5.1.1",
-    "morgan": "~1.9.0",
-    "passport": "^0.4.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.17.4"
-  }
+    "name": "redchillyserver",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "set NODE_ENV=development && node ./bin/www"
+    },
+    "dependencies": {
+        "cookie-parser": "~1.4.3",
+        "debug": "~2.6.9",
+        "express": "~4.16.0",
+        "mongoose": "^5.1.1",
+        "morgan": "~1.9.0",
+        "passport": "^0.4.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.17.4"
+    }
 }
