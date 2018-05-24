@@ -14,18 +14,24 @@ async function addMultipleMenuItems(menuItems) {
             new mongoose.Types.ObjectId(),
             i.name,
             i.price,
-            i.numbersAddedToCart,
             i.description,
             i.category,
-            i.version
+            i.version,
+            i.isVeg
         )
     })
     return dao.addMultipleMenuItems(menulist)
+}
+
+async function deleteMenuList() {
+    const menulist = dao.deleteMenuList();
+    return menulist;
 }
 
 
 
 module.exports = {
     getMenuList,
-    addMultipleMenuItems
+    addMultipleMenuItems,
+    deleteMenuList
 }

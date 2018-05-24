@@ -1,5 +1,5 @@
 export class ApiConfigService {
-  private baseUrl: string = "";
+  private baseUrl: string = "http://localhost:3000";
 
   apiEndPointObj = {};
   constructor() {
@@ -7,8 +7,13 @@ export class ApiConfigService {
   }
   private init() {
     this.apiEndPointObj['autenticateUser'] = {
-      url: this.baseUrl + '/userTokenization/query',
+      url: `${this.baseUrl}/userTokenization/query`,
       method: 'POST'
+    };
+
+    this.apiEndPointObj['getMenuList'] = {
+      url: `${this.baseUrl}/api/menu`,
+      method: 'GET'
     };
   }
 }

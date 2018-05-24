@@ -11,8 +11,14 @@ async function addMultipleMenuItems(menuItems /*Array of item*/ ) {
     return isInserted;
 }
 
+async function deleteMenuList() {
+    const menulist = await MenuItems.remove({});
+    return menulist;
+}
+
 
 module.exports = {
     getMenuItems,
-    addMultipleMenuItems
+    addMultipleMenuItems,
+    deleteMenuList
 }
