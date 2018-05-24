@@ -4,10 +4,11 @@ import { ChillyHomeComponent } from './chilly-home/chilly-home';
 import { ChillyMenuList } from './chilly-menu-list/chilly-menu-list';
 import { ChillyMenuListProvider } from '../providers/chilly-menu-list';
 import { IonicModule } from 'ionic-angular';
+import { ChilliCartComponent } from './chilli-cart/chilli-cart';
 @NgModule({
-  declarations: [ChillyHomeComponent, ChillyMenuList],
+  declarations: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent],
   imports: [CommonModule, IonicModule],
-  exports: [ChillyHomeComponent, ChillyMenuList],
+  exports: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent],
   providers: [
     ChillyMenuListProvider
   ]
