@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from '../../models/menuitem';
 import { ChillyMenuListProvider } from '../../providers/chilly-menu-list';
-import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/operators/map';
 import { Router } from '@angular/router';
@@ -19,14 +18,16 @@ import { RouteSharingService } from '../../services/service.pathconfig';
 })
 export class ChillyMenuList implements OnInit {
   ngOnInit(): void {
-    this.getMenuList();
+    const sharedData = this.sharedData.getSharedData('chillymenu')
+    this.getMenuList(sharedData);
   }
-  // haha looks ugly now :(
+
   menulist: Array<MenuItem>;
   menulistCategories: Array<{
     category: string,
     isHidden: boolean
   }>;
+  hasAddedSomeFood: boolean;
 
   constructor(
     private chillyMenuList: ChillyMenuListProvider,
@@ -37,13 +38,15 @@ export class ChillyMenuList implements OnInit {
 
   addTo(item) {
     item.numbersAddedToCart++;
+    this.willShowCartButton();
   }
 
   removeFrom(item) {
     item.numbersAddedToCart--;
+    this.willShowCartButton();
   }
 
-  getMenuList() {
+  getMenuList(hasSharedData: Array<MenuItem>) {
     this.chillyMenuList
       .getMenuList()
       .subscribe(i => {
@@ -57,7 +60,18 @@ export class ChillyMenuList implements OnInit {
             }
           })
           .filter((fi, index, arr) => arr.findIndex(ffi => ffi.category === fi.category) === index);
-        this.menulist = i;
+        this.menulist = i.map(li => {
+          li.numbersAddedToCart = 0
+          if (hasSharedData
+            && hasSharedData.length) {
+            const found = hasSharedData.find(fi => fi.id == li.id);
+            if (found) {
+              li.numbersAddedToCart = found.numbersAddedToCart;
+            }
+          }
+          return li;
+        });
+        this.willShowCartButton();
       })
   }
 
@@ -65,11 +79,21 @@ export class ChillyMenuList implements OnInit {
     return this.menulist.filter(fi => fi.category === category);
   }
 
+  findAddedNumbersToCart(category) {
+    const categoryList = this.findItemOfCategory(category);
+    return categoryList.filter(fi => fi.numbersAddedToCart > 0).length;
+  }
+
   moveToCart() {
     const toRoute = 'chillycart';
     const addedMenuItems = this.menulist.filter(i => i.numbersAddedToCart > 0);
     this.sharedData.addSharedData(toRoute, addedMenuItems);
     this.router.navigate([toRoute]);
+  }
+
+  willShowCartButton() {
+    const hasAddedSomeFood = this.menulist.filter(i => i.numbersAddedToCart > 0).length;
+    this.hasAddedSomeFood = hasAddedSomeFood > 0;
   }
 
 }

@@ -1,7 +1,7 @@
 <!-- Generated template for the ChilliCartComponent component -->
-<div>
+<div padding-bottom>
     <h1 padding-left>Your Cart</h1>
-    <ion-list>
+    <ion-list padding-bottom>
         <ion-item *ngFor="let item of cartItems">
             <div class="chilly-item-container chilli-flex chilli-row">
                 <div class="chilli-item-details chilli-row chilli-flex chilly-space-between">
@@ -32,5 +32,16 @@
                 </div>
             </div>
         </ion-item>
+        <ion-item padding>
+
+        </ion-item>
     </ion-list>
 </div>
+<ion-footer>
+    <div class="chilli-fixed chilli-bottom view-menu chilli-flex chilli-start" (click)="goBackToMenu()">
+        <button margin ion-button color="secondary" mode="md">
+          <ion-icon  name="arrow-round-back" mode="md"></ion-icon>
+          <span margin-left>Go back to edit</span> 
+        </button>
+    </div>
+</ion-footer>
