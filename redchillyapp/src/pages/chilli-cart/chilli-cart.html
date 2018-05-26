@@ -4,7 +4,14 @@
         <div>
             <div class="sub-text-header">Delivering to</div>
             <div class="strong-text-addr">
-                <button ion-button (click)="addDetails()">Add your details</button>
+                <button ion-button (click)="addDetails()" *ngIf="!user">Add your details</button>
+                <div *ngIf="user">
+                    <div>{{user.name}}</div>
+                    <div class="user-address" text-wrap>
+                        <div>{{user.addr1}}</div>
+                        <div>{{user.addr2}}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </ion-item>

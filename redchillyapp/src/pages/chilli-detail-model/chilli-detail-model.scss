@@ -1,5 +1,5 @@
 chilli-detail-model {
-    background-color: $theme-color-page-bg;
+    background-color: $ion-content-color-bg;
     .chilli-title {
         background-color: $theme-color-primary;
         min-height: 41px;
@@ -9,5 +9,15 @@ chilli-detail-model {
         font-size: 2rem;
         font-weight: 500;
         color: white;
+    }
+    .chilli-card-content {
+        background-color: $ion-content-color-bg;
+        border-radius: 5px;
+    }
+    .chilli-card-content-body {
+        background-color: $theme-color-white;
+    }
+    .view-menu {
+        background-color: #515151;
     }
 }

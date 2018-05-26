@@ -2,8 +2,44 @@
 <ion-header class="chilli-title chilli-flex chilli-align-cente">
     <div class="chilli-flex chilli-row chilly-space-between chilli-full-width">
         <div class="title-text chilli-flex chilli-align-center">Add Personal Details</div>
-        <div class="title-text chilli-flex chilli-align-center" end>
+        <div class="title-text chilli-flex chilli-align-center" (click)="dismiss()">
             X
         </div>
     </div>
 </ion-header>
+<ion-content class="chilli-card-content chilli-full-height">
+    <div class="chilli-card-content-body" padding margin>
+        <form [formGroup]="userDetails">
+            <ion-list>
+                <ion-item>
+                    <ion-label floating>Full Name</ion-label>
+                    <ion-input type="text" required formControlName="name" [(ngModel)]="user.name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Contact Number</ion-label>
+                    <ion-input type="number" required formControlName="contact" [(ngModel)]="user.contact"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Email</ion-label>
+                    <ion-input type="email" required formControlName="email" [(ngModel)]="user.email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Flat/Building</ion-label>
+                    <ion-input type="text" required formControlName="addr1" [(ngModel)]="user.addr1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Complete Address</ion-label>
+                    <ion-input type="text" required formControlName="addr2" [(ngModel)]="user.addr2"></ion-input>
+                </ion-item>
+            </ion-list>
+        </form>
+    </div>
+</ion-content>
+<ion-footer>
+    <div class="chilli-fixed chilli-bottom view-menu chilli-flex chilli-end">
+        <button margin ion-button color="secondary" mode="md" (click)="submit()">
+          <span >Save</span> 
+          <ion-icon  margin-left name="arrow-round-forward" mode="md"></ion-icon>
+        </button>
+    </div>
+</ion-footer>

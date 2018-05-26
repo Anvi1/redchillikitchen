@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ModalController } from 'ionic-angular';
 import { ChillyMenuList } from '../chilly-menu-list/chilly-menu-list';
 import { ChilliDetailModelComponent } from '../chilli-detail-model/chilli-detail-model';
+import { ChillyUser } from '../../models/user';
 
 /**
  * Generated class for the ChilliCartComponent component.
@@ -18,7 +19,7 @@ import { ChilliDetailModelComponent } from '../chilli-detail-model/chilli-detail
 })
 export class ChilliCartComponent implements OnInit {
 
-
+  user: ChillyUser;
   cartItems: Array<MenuItem>;
   subTotal: number;
   constructor(
@@ -47,5 +48,9 @@ export class ChilliCartComponent implements OnInit {
   addDetails() {
     let userDetailModel = this.modalCtrl.create(ChilliDetailModelComponent);
     userDetailModel.present();
+
+    userDetailModel.onDidDismiss((user) => {
+      this.user = user;
+    })
   }
 }
