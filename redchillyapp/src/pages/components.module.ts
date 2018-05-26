@@ -6,7 +6,6 @@ import { ChillyMenuListProvider } from '../providers/chilly-menu-list';
 import { IonicModule } from 'ionic-angular';
 import { ChilliCartComponent } from './chilli-cart/chilli-cart';
 import { RouteSharingService, ApiMainService, ApiConfigService, ApiHttpService } from '../services/service.pathconfig';
-import { HttpModule, Http } from '@angular/http';
 @NgModule({
   declarations: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent],
   imports: [CommonModule, IonicModule],

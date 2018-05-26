@@ -9,7 +9,6 @@ import 'rxjs/add/observable/of';
 
 import { Router } from '@angular/router';
 import { RouteSharingService } from '../../services/service.pathconfig';
-import { IfObservable } from 'rxjs/observable/IfObservable';
 import { Observable } from 'rxjs/Observable';
 import { ToastController } from 'ionic-angular';
 
