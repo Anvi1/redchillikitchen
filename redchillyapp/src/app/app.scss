@@ -100,3 +100,7 @@ i {
     //TODO: We have to modify this as we move to prod;
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
+
+.content-bg {
+    background-color: $ion-content-color-bg;
+}
