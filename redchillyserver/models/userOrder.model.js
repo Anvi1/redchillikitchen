@@ -3,11 +3,12 @@ const Schema = mongoose.Schema;
 
 const userOrder = new Schema({
     customerName: String,
-    mobileNo: String,
+    mobileNo: Number,
     address: String,
     billingAmount: Number,
     currentGST: Number,
-    orderTime: Date,
+    orderTime: {type:Number,default: (new Date()).getTime()},
+    orderStatus:{type: String, enum: ['NEW','CANCELED','DELIVERED'], default: 'NEW'},
     foodItemList: [{
         name: String,
         price: Number,
@@ -15,6 +16,4 @@ const userOrder = new Schema({
     }]
 });
 
-const model = mongoose.model('UserOrder', userOrder);
-
-module.exports = { model };
+module.exports = mongoose.model('UserOrder', userOrder);

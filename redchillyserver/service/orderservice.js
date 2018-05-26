@@ -3,14 +3,21 @@ const mongoose = require('mongoose');
 // dao.connect();
 
 async function getOrderList() {
-    const menulist = dao.getUserOrderList();
-    return menulist;
+    return dao.getUserOrderList();  
 }
-async function saveNewUserOrder(order) { 
-    return dao.saveNewUserOrder();
+async function saveNewUserOrder(order) {       
+    return dao.saveNewUserOrder(order);    
+}
+async function getLatestOrderList(previousLatestTime) { 
+    return dao.getLatestOrderList(previousLatestTime);
+}
+async function updateOrderStatus(id,status) { 
+    return dao.updateOrderStatus(id,status);
 }
 
 module.exports = {
     getOrderList,
-    saveNewUserOrder
+    saveNewUserOrder,
+    getLatestOrderList,
+    updateOrderStatus
 }
