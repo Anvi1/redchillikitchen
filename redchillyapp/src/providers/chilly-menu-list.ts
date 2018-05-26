@@ -13,9 +13,9 @@ import { ApiMainService } from '../services/service.pathconfig';
 */
 @Injectable()
 export class ChillyMenuListProvider {
-
+  cartItems: Array<MenuItem>;
   constructor(private apiMainService: ApiMainService) {
-
+    this.cartItems = [];
   }
 
   getMenuList(): Observable<Array<MenuItem>> {
@@ -36,5 +36,13 @@ export class ChillyMenuListProvider {
       });
 
     return Observable.fromPromise(menulist);
+  }
+
+  saveCart(cartItems) {
+    this.cartItems = cartItems;
+  }
+
+  getCartItems() {
+    return this.cartItems;
   }
 }
