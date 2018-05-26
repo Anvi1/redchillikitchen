@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RouteSharingService } from '../../services/service.pathconfig';
 import { MenuItem } from '../../models/menuitem';
 import { Router } from '@angular/router';
+import { ModalController } from 'ionic-angular';
+import { ChillyMenuList } from '../chilly-menu-list/chilly-menu-list';
+import { ChilliDetailModelComponent } from '../chilli-detail-model/chilli-detail-model';
 
 /**
  * Generated class for the ChilliCartComponent component.
@@ -21,6 +24,7 @@ export class ChilliCartComponent implements OnInit {
   constructor(
     private sharedData: RouteSharingService,
     private router: Router,
+    public modalCtrl: ModalController,
   ) { }
 
   ngOnInit(): void {
@@ -38,5 +42,10 @@ export class ChilliCartComponent implements OnInit {
     const cartItems = this.cartItems;
     this.sharedData.addSharedData(toRoute, cartItems);
     this.router.navigate([toRoute]);
+  }
+
+  addDetails() {
+    let userDetailModel = this.modalCtrl.create(ChilliDetailModelComponent);
+    userDetailModel.present();
   }
 }
