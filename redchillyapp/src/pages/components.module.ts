@@ -7,9 +7,16 @@ import { IonicModule } from 'ionic-angular';
 import { ChilliCartComponent } from './chilli-cart/chilli-cart';
 import { RouteSharingService, ApiMainService, ApiConfigService, ApiHttpService } from '../services/service.pathconfig';
 import { ChilliDetailModelComponent } from './chilli-detail-model/chilli-detail-model';
+import { ChillyOrderProvider } from '../providers/chilly-order';
+
 @NgModule({
   entryComponents: [ChilliDetailModelComponent],
-  declarations: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent, ChilliDetailModelComponent],
+  declarations: [
+    ChillyHomeComponent,
+    ChillyMenuList,
+    ChilliCartComponent,
+    ChilliDetailModelComponent
+  ],
   imports: [CommonModule, IonicModule],
   exports: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent],
   providers: [
@@ -17,7 +24,8 @@ import { ChilliDetailModelComponent } from './chilli-detail-model/chilli-detail-
     RouteSharingService,
     ApiMainService,
     ApiConfigService,
-    ApiHttpService
+    ApiHttpService,
+    ChillyOrderProvider
   ]
 })
 export class PagesModule { }

@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RouteSharingService } from '../../services/service.pathconfig';
 import { MenuItem } from '../../models/menuitem';
 import { Router } from '@angular/router';
-import { ModalController } from 'ionic-angular';
+import { ModalController, ToastController } from 'ionic-angular';
 import { ChilliDetailModelComponent } from '../chilli-detail-model/chilli-detail-model';
 import { ChillyUser } from '../../models/user';
 import { UserOrder } from '../../models/userorder';
+import { ChillyOrderProvider } from '../../providers/chilly-order';
 
 /**
  * Generated class for the ChilliCartComponent component.
@@ -26,6 +27,8 @@ export class ChilliCartComponent implements OnInit {
     private sharedData: RouteSharingService,
     private router: Router,
     public modalCtrl: ModalController,
+    private orderProvider: ChillyOrderProvider,
+    public toastCtrl: ToastController
   ) { }
 
   ngOnInit(): void {
@@ -79,7 +82,27 @@ export class ChilliCartComponent implements OnInit {
       45,
       cartItems
     )
-
-    console.log(userOrder);
+    let toast;
+    this.orderProvider
+      .placeOrder(userOrder)
+      .then(() => {
+        toast = this.toastCtrl.create({
+          message: 'Order Placed !',
+          showCloseButton: false,
+          duration: 3000,
+          position: 'bottom'
+        });
+      })
+      .catch((err) => {
+        toast = this.toastCtrl.create({
+          message: 'Our servers are not reachable! Please retry',
+          showCloseButton: false,
+          duration: 3000,
+          position: 'bottom'
+        });
+      })
+      .then(() => {
+        toast.present();
+      })
   }
 }
