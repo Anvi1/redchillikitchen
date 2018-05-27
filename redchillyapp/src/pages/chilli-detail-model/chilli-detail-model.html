@@ -8,36 +8,44 @@
     </div>
 </ion-header>
 <ion-content class="chilli-card-content chilli-full-height">
-    <div class="chilli-card-content-body" padding margin>
+    <div class="chilli-card-content-body custom-input-box" padding margin>
         <form [formGroup]="userDetails">
-            <ion-list>
-                <ion-item>
-                    <ion-label floating>Full Name</ion-label>
-                    <ion-input type="text" required formControlName="name" [(ngModel)]="user.name"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label floating>Contact Number</ion-label>
-                    <ion-input type="number" required formControlName="contact" [(ngModel)]="user.contact"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label floating>Email</ion-label>
-                    <ion-input type="email" required formControlName="email" [(ngModel)]="user.email"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label floating>Flat/Building</ion-label>
-                    <ion-input type="text" required formControlName="addr1" [(ngModel)]="user.addr1"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label floating>Complete Address</ion-label>
-                    <ion-input type="text" required formControlName="addr2" [(ngModel)]="user.addr2"></ion-input>
-                </ion-item>
-            </ion-list>
+            <div class="group">
+                <input required formControlName="name" [(ngModel)]="user.name" type="text">
+                <span class="highlight"></span>
+                <span class="bar" [ngClass]="{'chilli-invalid':userDetails.controls.name.invalid}"></span>
+                <label>Name</label>
+            </div>
+            <div class="group">
+                <input type="number" required formControlName="contact" [(ngModel)]="user.contact">
+                <span class="highlight"></span>
+                <span class="bar" [ngClass]="{'chilli-invalid':userDetails.controls.contact.invalid}"></span>
+                <label>Contact Number</label>
+            </div>
+            <div class="group">
+                <input type="email" required formControlName="email" [(ngModel)]="user.email">
+                <span class="highlight"></span>
+                <span class="bar" [ngClass]="{'chilli-invalid':userDetails.controls.email.invalid}"></span>
+                <label>Email</label>
+            </div>
+            <div class="group">
+                <input type="text" required formControlName="addr1" [(ngModel)]="user.addr1">
+                <span class="highlight"></span>
+                <span class="bar" [ngClass]="{'chilli-invalid':userDetails.controls.addr1.invalid}"></span>
+                <label>Flat/Building</label>
+            </div>
+            <div class="group">
+                <input type="text" required formControlName="addr2" [(ngModel)]="user.addr2">
+                <span class="highlight"></span>
+                <span class="bar" [ngClass]="{'chilli-invalid':userDetails.controls.addr2.invalid}"></span>
+                <label>Complete Address</label>
+            </div>
         </form>
     </div>
 </ion-content>
 <ion-footer>
     <div class="chilli-fixed chilli-bottom view-menu chilli-flex chilli-end">
-        <button margin ion-button color="secondary" mode="md" (click)="submit()">
+        <button margin ion-button color="secondary" [disabled]="userDetails.invalid" mode="md" (click)="submit()">
           <span >Save</span> 
           <ion-icon  margin-left name="arrow-round-forward" mode="md"></ion-icon>
         </button>
