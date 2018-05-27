@@ -20,4 +20,10 @@ chilli-detail-model {
     .view-menu {
         background-color: #515151;
     }
+    .ng-touched {
+        &~.chilli-invalid {
+            background: #ff0f0f;
+            height: 1px;
+        }
+    }
 }
