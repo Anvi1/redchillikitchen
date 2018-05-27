@@ -5,7 +5,7 @@ import { ChillyMenuList } from './chilly-menu-list/chilly-menu-list';
 import { ChillyMenuListProvider } from '../providers/chilly-menu-list';
 import { IonicModule } from 'ionic-angular';
 import { ChilliCartComponent } from './chilli-cart/chilli-cart';
-import { RouteSharingService, ApiMainService, ApiConfigService, ApiHttpService } from '../services/service.pathconfig';
+import { RouteSharingService, ApiMainService, ApiConfigService, ApiHttpService, LocalstorageService } from '../services/service.pathconfig';
 import { ChilliDetailModelComponent } from './chilli-detail-model/chilli-detail-model';
 import { ChillyOrderProvider } from '../providers/chilly-order';
 
@@ -25,7 +25,8 @@ import { ChillyOrderProvider } from '../providers/chilly-order';
     ApiMainService,
     ApiConfigService,
     ApiHttpService,
-    ChillyOrderProvider
+    ChillyOrderProvider,
+    LocalstorageService
   ]
 })
 export class PagesModule { }

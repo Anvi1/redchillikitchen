@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, NavParams } from 'ionic-angular';
 
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ChillyUser } from '../../models/user';
@@ -21,7 +21,8 @@ export class ChilliDetailModelComponent {
 
   constructor(
     public viewCtrl: ViewController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private navParams: NavParams,
   ) {
     this.user = new ChillyUser(
       "",
@@ -30,6 +31,10 @@ export class ChilliDetailModelComponent {
       "",
       ""
     )
+    const user = this.navParams.get('user');
+    if (user) {
+      this.user = user;
+    }
     this.userDetails = this.formBuilder.group({
       name: ['', Validators.required],
       contact: new FormControl('', [
