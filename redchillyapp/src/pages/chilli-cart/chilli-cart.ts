@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ModalController } from 'ionic-angular';
 import { ChilliDetailModelComponent } from '../chilli-detail-model/chilli-detail-model';
 import { ChillyUser } from '../../models/user';
+import { UserOrder } from '../../models/userorder';
 
 /**
  * Generated class for the ChilliCartComponent component.
@@ -51,5 +52,34 @@ export class ChilliCartComponent implements OnInit {
     userDetailModel.onDidDismiss((user) => {
       this.user = user;
     })
+  }
+
+  placeOrder() {
+    const address = `${this.user.addr1} ${this.user.addr2}`;
+    const cartItems: Array<{
+      name: string,
+      price: number,
+      quantity: number,
+    }> = this.cartItems
+      .map(i => {
+        const name = i.name;
+        const price = i.price;
+        const quantity = i.numbersAddedToCart;
+        return {
+          name,
+          price,
+          quantity
+        }
+      })
+    const userOrder = new UserOrder(
+      this.user.name,
+      this.user.contact,
+      address,
+      45,
+      45,
+      cartItems
+    )
+
+    console.log(userOrder);
   }
 }
