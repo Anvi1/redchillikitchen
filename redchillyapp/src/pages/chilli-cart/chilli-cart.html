@@ -66,7 +66,7 @@
           <ion-icon  name="arrow-round-back" mode="md"></ion-icon>
           <span margin-left>Edit Order</span> 
         </button>
-        <button margin ion-button color="secondary" mode="md" (click)="goBackToMenu()">
+        <button margin ion-button color="secondary" mode="md" *ngIf="user" (click)="placeOrder()">
           <span margin-left>Place Order</span> 
           <ion-icon  name="arrow-round-forward" mode="md"></ion-icon>
         </button>

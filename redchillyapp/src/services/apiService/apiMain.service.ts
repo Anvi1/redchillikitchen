@@ -26,4 +26,9 @@ export class ApiMainService {
     return this.apiHttpService
       .REQUEST(this.apiConfigService.apiEndPointObj['getMenuList'])
   }
+
+  placeOrder(paylaodObj) {
+    return this.apiHttpService
+      .REQUEST(this.apiConfigService.apiEndPointObj['placeOrder'], paylaodObj)
+  }
 }

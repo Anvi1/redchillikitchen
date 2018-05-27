@@ -15,5 +15,10 @@ export class ApiConfigService {
       url: `${this.baseUrl}/api/menu`,
       method: 'GET'
     };
+
+    this.apiEndPointObj['placeOrder'] = {
+      url: `${this.baseUrl}/api/order`,
+      method: 'POST'
+    };
   }
 }
