@@ -31,6 +31,21 @@ chilly-menu-list {
         padding: 0 10px;
     }
     .view-cart {
-        background-color: white;
+        background-color: #515151;
+    }
+    $image-dim:20;
+    .chilli-veg {
+        background-image: url('../../assets/imgs/veg-non-veg.jpg');
+        height: #{$image-dim}px;
+        width: #{$image-dim}px;
+        background-repeat: no-repeat;
+        background-size:#{$image-dim*2}px;
+        background-position: -0px -0px;
+    }
+    .chilli-non-veg {
+        background-position: -#{$image-dim}px -0px;
+    }
+    .name-margin {
+        margin-left: 5px;
     }
 }

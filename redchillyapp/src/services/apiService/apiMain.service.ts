@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiConfigService } from './apiConfig.service';
 import { ApiHttpService } from './apiHttp.service';
-import { LocalstorageService } from '../utilService/localstorage.service';
 import 'rxjs/add/operator/toPromise';
-import { MenuItem } from '../../models/menuitem';
 
 @Injectable()
 export class ApiMainService {

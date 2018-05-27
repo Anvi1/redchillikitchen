@@ -62,6 +62,10 @@
     width: 100%;
 }
 
+.chilli-full-width {
+    width: 100%;
+}
+
 .chilli-bottom {
     bottom: 0;
 }
@@ -99,4 +103,8 @@ i {
 .body {
     //TODO: We have to modify this as we move to prod;
     font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.content-bg {
+    background-color: $ion-content-color-bg;
 }

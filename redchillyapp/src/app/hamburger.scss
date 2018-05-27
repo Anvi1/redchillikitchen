@@ -1,18 +1,18 @@
 .rck-hamburger {
-    background-color: white;
+    background-color: $theme-color-white;
     &:before {
         top: -10px;
         display: block;
         content: "";
         position: relative;
-        background-color: white;
+        background-color: $theme-color-white;
     }
     &:after {
         top: 10px;
         display: block;
         content: "";
         position: relative;
-        background-color: white;
+        background-color: $theme-color-white;
     }
 }
 
@@ -20,11 +20,11 @@
     width: 30px;
     height: 4px;
     display: block;
-    background-color: white;
+    background-color: $theme-color-white;
     margin-top: 3px;
 }
 
 .rck-header {
-    background-color: #ff854e; //TODO: define this in variable after theme decision
+    background-color: $theme-color-primary;
     padding: 10px;
 }

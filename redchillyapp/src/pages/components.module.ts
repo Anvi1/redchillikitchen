@@ -6,9 +6,10 @@ import { ChillyMenuListProvider } from '../providers/chilly-menu-list';
 import { IonicModule } from 'ionic-angular';
 import { ChilliCartComponent } from './chilli-cart/chilli-cart';
 import { RouteSharingService, ApiMainService, ApiConfigService, ApiHttpService } from '../services/service.pathconfig';
-import { HttpModule, Http } from '@angular/http';
+import { ChilliDetailModelComponent } from './chilli-detail-model/chilli-detail-model';
 @NgModule({
-  declarations: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent],
+  entryComponents: [ChilliDetailModelComponent],
+  declarations: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent, ChilliDetailModelComponent],
   imports: [CommonModule, IonicModule],
   exports: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent],
   providers: [

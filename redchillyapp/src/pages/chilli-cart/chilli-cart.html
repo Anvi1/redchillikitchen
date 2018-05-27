@@ -1,5 +1,20 @@
 <!-- Generated template for the ChilliCartComponent component -->
 <div padding-bottom>
+    <ion-item>
+        <div>
+            <div class="sub-text-header">Delivering to</div>
+            <div class="strong-text-addr">
+                <button ion-button (click)="addDetails()" *ngIf="!user">Add your details</button>
+                <div *ngIf="user">
+                    <div>{{user.name}}</div>
+                    <div class="user-address" text-wrap>
+                        <div>{{user.addr1}}</div>
+                        <div>{{user.addr2}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-item>
     <h1 padding-left>Your Cart</h1>
     <ion-list padding-bottom>
         <ion-item *ngFor="let item of cartItems">
@@ -46,8 +61,8 @@
     </ion-list>
 </div>
 <ion-footer>
-    <div class="chilli-fixed chilli-bottom view-menu chilli-flex chilli-start" (click)="goBackToMenu()">
-        <button margin ion-button color="secondary" mode="md">
+    <div class="chilli-fixed chilli-bottom view-menu chilli-flex chilli-start">
+        <button margin ion-button color="secondary" mode="md" (click)="goBackToMenu()">
           <ion-icon  name="arrow-round-back" mode="md"></ion-icon>
           <span margin-left>Edit Order</span> 
         </button>
