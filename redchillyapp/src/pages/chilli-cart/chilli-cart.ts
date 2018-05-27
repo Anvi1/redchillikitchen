@@ -20,6 +20,10 @@ import { ChillyOrderProvider } from '../../providers/chilly-order';
 })
 export class ChilliCartComponent implements OnInit {
 
+  gtotal: number;
+  taxes: number;
+  taxesRateCgst: number;
+  taxesRateSgst: number;
   user: ChillyUser;
   cartItems: Array<MenuItem>;
   subTotal: number;
@@ -36,9 +40,13 @@ export class ChilliCartComponent implements OnInit {
     if (this.cartItems
       && this.cartItems.length) {
       this.subTotal = this.cartItems
-        .map(i => i.price)
-        .reduce((now, next) => now + next, 0);
+        .map(mi => mi.numbersAddedToCart * mi.price)
+        .reduce((fi, si) => fi + si, 0);
     }
+    this.taxesRateCgst = 5;
+    this.taxesRateSgst = 5;
+    this.taxes = this.subTotal * ((this.taxesRateCgst + this.taxesRateSgst) / 100);
+    this.gtotal = this.subTotal + this.taxes;
   }
 
   goBackToMenu() {
@@ -73,7 +81,8 @@ export class ChilliCartComponent implements OnInit {
           price,
           quantity
         }
-      })
+      });
+
     const userOrder = new UserOrder(
       this.user.name,
       this.user.contact,
