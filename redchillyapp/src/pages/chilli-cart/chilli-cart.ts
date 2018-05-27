@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteSharingService } from '../../services/service.pathconfig';
+import { RouteSharingService, LocalstorageService } from '../../services/service.pathconfig';
 import { MenuItem } from '../../models/menuitem';
 import { Router } from '@angular/router';
 import { ModalController, ToastController } from 'ionic-angular';
@@ -32,10 +32,15 @@ export class ChilliCartComponent implements OnInit {
     private router: Router,
     public modalCtrl: ModalController,
     private orderProvider: ChillyOrderProvider,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private localStorageService: LocalstorageService
   ) { }
 
   ngOnInit(): void {
+    const user = this.localStorageService.getChacheData('USER_DETAILS');
+    if (user) {
+      this.user = user;
+    }
     this.cartItems = this.sharedData.getSharedData('chillycart');
     if (this.cartItems
       && this.cartItems.length) {
@@ -56,12 +61,15 @@ export class ChilliCartComponent implements OnInit {
     this.router.navigate([toRoute]);
   }
 
-  addDetails() {
-    let userDetailModel = this.modalCtrl.create(ChilliDetailModelComponent);
+  addDetails(user?) {
+    let userDetailModel = this.modalCtrl.create(ChilliDetailModelComponent, { user });
     userDetailModel.present();
 
     userDetailModel.onDidDismiss((user) => {
-      this.user = user;
+      if (user) {
+        this.user = user;
+        this.localStorageService.setChacheData('USER_DETAILS', this.user);
+      }
     })
   }
 
