@@ -14,8 +14,9 @@
             <ion-item no-lines padding-left text-wrap *ngFor="let item of findItemOfCategory(categoryObj.category)">
                 <div class="chilly-item-container chilli-flex chilli-row">
                     <div class="chilli-item-details">
-                        <div class="chilli-item-name">
-                            {{item.name}}
+                        <div class="chilli-item-name chilli-flex chilli-row chilli-align-center">
+                            <span class="chilli-veg" [ngClass]="{'chilli-non-veg':!item.isVeg}"></span>
+                            <span class="name-margin"> {{item.name}}</span>
                         </div>
                         <div class="chilli-item-price">
                             {{item.price | currency:"₹":0}}
