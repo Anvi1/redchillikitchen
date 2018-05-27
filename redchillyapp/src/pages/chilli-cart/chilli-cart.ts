@@ -54,10 +54,12 @@ export class ChilliCartComponent implements OnInit {
     this.gtotal = this.subTotal + this.taxes;
   }
 
-  goBackToMenu() {
+  goBackToMenu(withoutItems?) {
     const toRoute = 'chillymenu';
     const cartItems = this.cartItems;
-    this.sharedData.addSharedData(toRoute, cartItems);
+    if (!withoutItems) {
+      this.sharedData.addSharedData(toRoute, cartItems);
+    }
     this.router.navigate([toRoute]);
   }
 
@@ -104,11 +106,12 @@ export class ChilliCartComponent implements OnInit {
       .placeOrder(userOrder)
       .then(() => {
         toast = this.toastCtrl.create({
-          message: 'Order Placed !',
+          message: 'Your Order is Placed !',
           showCloseButton: false,
           duration: 3000,
           position: 'bottom'
         });
+        this.goBackToMenu(true);
       })
       .catch((err) => {
         toast = this.toastCtrl.create({

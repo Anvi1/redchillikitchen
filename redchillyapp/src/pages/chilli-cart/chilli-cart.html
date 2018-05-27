@@ -64,14 +64,14 @@
     </ion-list>
 </div>
 <ion-footer>
-    <div class="chilli-fixed chilli-bottom view-menu chilli-flex chilli-start">
+    <div class="chilli-fixed chilli-bottom view-menu chilli-flex chilly-space-between">
         <button margin ion-button color="secondary" mode="md" (click)="goBackToMenu()">
           <ion-icon  name="arrow-round-back" mode="md"></ion-icon>
           <span margin-left>Edit Order</span> 
         </button>
         <button margin ion-button color="secondary" mode="md" *ngIf="user" (click)="placeOrder()">
-          <span margin-left>Place Order</span> 
-          <ion-icon  name="arrow-round-forward" mode="md"></ion-icon>
+          <span>Place Order</span> 
+          <ion-icon margin-left name="arrow-round-forward" mode="md"></ion-icon>
         </button>
     </div>
 </ion-footer>

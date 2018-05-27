@@ -26,7 +26,6 @@ export class UserOrder {
       quantity: number,
     }>,
   ) {
-    debugger;
     this.customerName = customerName;
     this.mobileNo = mobileNo;
     this.address = address;
