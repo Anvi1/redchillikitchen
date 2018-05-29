@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { RouteSharingService } from '../../services/service.pathconfig';
 import { Observable } from 'rxjs/Observable';
 import { ToastController } from 'ionic-angular';
+import { ChillyImageProvider } from '../../providers/chilli-image.provider';
 
 /**
  * Generated class for the ChillyMenuList component.
@@ -27,6 +28,7 @@ export class ChillyMenuList implements OnInit {
   ngOnInit(): void {
     const sharedData = this.sharedData.getSharedData('chillymenu')
     this.getMenuList(sharedData);
+    this.carousels = this.images.getCarouselImages();
   }
 
   menulist: Array<MenuItem>;
@@ -36,12 +38,14 @@ export class ChillyMenuList implements OnInit {
     addedItems: number,
   }>;
   hasAddedSomeFood: boolean;
+  carousels: Observable<string[]>;
 
   constructor(
     private chillyMenuList: ChillyMenuListProvider,
     private router: Router,
     private sharedData: RouteSharingService,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private images: ChillyImageProvider
   ) {
   }
 

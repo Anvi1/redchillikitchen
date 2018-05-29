@@ -8,6 +8,7 @@ import { ChilliCartComponent } from './chilli-cart/chilli-cart';
 import { RouteSharingService, ApiMainService, ApiConfigService, ApiHttpService, LocalstorageService } from '../services/service.pathconfig';
 import { ChilliDetailModelComponent } from './chilli-detail-model/chilli-detail-model';
 import { ChillyOrderProvider } from '../providers/chilly-order';
+import { ChillyImageProvider } from '../providers/chilli-image.provider';
 
 @NgModule({
   entryComponents: [ChilliDetailModelComponent],
@@ -26,7 +27,8 @@ import { ChillyOrderProvider } from '../providers/chilly-order';
     ApiConfigService,
     ApiHttpService,
     ChillyOrderProvider,
-    LocalstorageService
+    LocalstorageService,
+    ChillyImageProvider
   ]
 })
 export class PagesModule { }
