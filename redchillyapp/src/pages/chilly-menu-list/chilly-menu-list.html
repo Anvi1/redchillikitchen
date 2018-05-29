@@ -1,4 +1,11 @@
 <!-- Generated template for the ChillyHomeComponent component -->
+<div class="chilli-carousel">
+    <ion-slides>
+        <ion-slide *ngFor="let image of carousels|async">
+            <img [src]="image" class="chilli-c-image">
+        </ion-slide>
+    </ion-slides>
+</div>
 <ion-list margin-bottom>
     <div *ngFor="let categoryObj of menulistCategories">
         <ion-item text-wrap text-capitalize (click)="categoryObj.isHidden = !categoryObj.isHidden">
