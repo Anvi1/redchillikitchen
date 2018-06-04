@@ -5,11 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const doaConnect = require('./dao/dao.connection').connect;
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const menuRoutes = require('./routes/menu');
-const orderRoutes = require('./routes/order');
-const variableRoutes = require('./routes/variable');
+const routeConfig = require('./config/routeConfig');
+
 const app = express();
 const env = `development`;
 
@@ -23,6 +20,7 @@ if (env == 'development') {
 }
 
 doaConnect();
+routeConfig(app);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -30,10 +28,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/', indexRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/menu', menuRoutes);   
-app.use('/api/order', orderRoutes);
-app.use('/api/projectvariable', variableRoutes);
+
 
 module.exports = app;
