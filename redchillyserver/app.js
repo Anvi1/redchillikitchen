@@ -20,6 +20,7 @@ if (env == 'development') {
 }
 
 doaConnect();
+//test comment
 routeConfig(app);
 
 app.use(logger('dev'));
