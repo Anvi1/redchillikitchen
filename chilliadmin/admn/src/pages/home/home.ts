@@ -8,10 +8,11 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
   iscooking: boolean;
+  menu;
   varRoute = "http://localhost:3000/api/projectvariable"
   constructor(public navCtrl: NavController,
     private http: Http) {
-
+    this.menu = [];
   }
 
   changeStatus(val) {
@@ -23,5 +24,20 @@ export class HomePage {
         this.iscooking = val;
       }
     })
+  }
+
+  addItem() {
+    this.menu.push(
+      JSON.parse(JSON.stringify(
+        {
+          "name": "",
+          "isVeg": true,
+          "price": 0,
+          "category": "",
+          "numbersAddedToCart": 0,
+          "description": ""
+        }
+      ))
+    )
   }
 }
