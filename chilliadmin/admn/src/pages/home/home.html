@@ -7,6 +7,6 @@
 </ion-header>
 
 <ion-content padding>
-    <button ion-button>Offline</button>
-    <button ion-button>Online</button>
+    <button ion-button (click)="changeStatus(false)" *ngIf="iscooking">Go Offline</button>
+    <button ion-button (click)="changeStatus(true)" *ngIf="!iscooking">Go Online</button>
 </ion-content>

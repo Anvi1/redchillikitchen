@@ -7,9 +7,21 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController, private http: Http) {
+  iscooking: boolean;
+  varRoute = "http://localhost:3000/api/projectvariable"
+  constructor(public navCtrl: NavController,
+    private http: Http) {
 
   }
 
+  changeStatus(val) {
+    this.http.put(this.varRoute, {
+      "varialble_name": "ISCOOKING",
+      "variable_value": val
+    }).subscribe(uy => {
+      if (uy && uy.ok) {
+        this.iscooking = val;
+      }
+    })
+  }
 }
