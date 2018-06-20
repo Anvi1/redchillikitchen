@@ -6,15 +6,14 @@ var router = express.Router();
 
 router.get('/', async(req, res, next) => {
     try {
-        let variableList = await variableService.getVariableList();      
+        let variableList = await variableService.getVariableList();
         success.success200(res, variableList);
     } catch (error) {
         errors.hasError500(req, res);
     }
-}); 
+});
 router.post('/', async(req, res, next) => {
     try {
-        console.log(req.body)
         let savedVariable = await variableService.setVariable(req.body);
         success.success200(res, savedVariable);
     } catch (error) {
@@ -26,6 +25,24 @@ router.get('/getvariable/:varname', async(req, res, next) => {
         let varname = req.params.varname;
         let variableValue = await variableService.getVariableValue(varname);
         success.success200(res, variableValue);
+    } catch (error) {
+        errors.hasError500(req, res);
+    }
+});
+
+router.delete('/', async(req, res, next) => {
+    try {
+        let variableList = await variableService.deleteVariableList();
+        success.success200(res, variableList);
+    } catch (error) {
+        errors.hasError500(req, res);
+    }
+});
+
+router.put('/', async(req, res, next) => {
+    try {
+        let savedVariable = await variableService.updateVariableValue(req.body);
+        success.success200(res, savedVariable);
     } catch (error) {
         errors.hasError500(req, res);
     }

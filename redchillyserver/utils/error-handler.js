@@ -5,10 +5,10 @@ function hasError500(req, res) {
     return;
 }
 
-function message(res, message) {
+function message(res, message, shouldShow) {
     res
         .status(400)
-        .send({ error: message })
+        .send({ error: message, shouldShow: shouldShow })
 }
 
 module.exports = {

@@ -114,8 +114,12 @@ export class ChilliCartComponent implements OnInit {
         this.goBackToMenu(true);
       })
       .catch((err) => {
+        let msg = 'Our servers are not reachable! Please retry';
+        if (err && err.shouldShow) {
+          msg = err.error;
+        }
         toast = this.toastCtrl.create({
-          message: 'Our servers are not reachable! Please retry',
+          message: msg,
           showCloseButton: false,
           duration: 3000,
           position: 'bottom'
