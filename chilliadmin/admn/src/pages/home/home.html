@@ -24,7 +24,7 @@
                 <div class="divTableCell">&nbsp;category</div>
             </div>
             <div class="divTableRow" *ngFor="let item of menu">
-                <div class="divTableCell"><input type="text" /></div>
+                <div class="divTableCell"><input type="text" [(ngModel)]="item.name" /></div>
                 <div class="divTableCell"><input type="text" /></div>
                 <div class="divTableCell"><input type="text" /></div>
                 <div class="divTableCell"><input type="text" /></div>
