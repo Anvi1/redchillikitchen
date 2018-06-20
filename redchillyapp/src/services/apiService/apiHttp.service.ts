@@ -48,6 +48,9 @@ export class ApiHttpService {
   private handleError(self) {
     return (error) => {
       try {
+        if (error && error.json) {
+          return Promise.reject(error.json());
+        }
         return Promise.reject(error.message || error);
       } catch (error) {
         let ErrorMsg = 'Some Error Occured Try Again Later';

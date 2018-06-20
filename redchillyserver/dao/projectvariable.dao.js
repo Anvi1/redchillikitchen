@@ -11,7 +11,11 @@ async function setVariable(vObj) {
 };
 
 async function getVariableValue(varname) {
-    return await ProjectVariable.find({ varialble_name: varname });
+    const value = await ProjectVariable.findOne({ varialble_name: varname });
+    if (!value || !value.variable_value) {
+        return null;
+    }
+    return value.variable_value;
 };
 
 async function updateVariableValue(vObj) {
