@@ -38,8 +38,7 @@ export class ChilliDetailModelComponent {
     this.userDetails = this.formBuilder.group({
       name: ['', Validators.required],
       contact: new FormControl('', [
-        Validators.minLength(10),
-        Validators.maxLength(10),
+        Validators.min(999999999),
         Validators.required
       ]),
       email: new FormControl('', Validators.compose([
