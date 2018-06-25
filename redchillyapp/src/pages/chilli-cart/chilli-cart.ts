@@ -67,7 +67,10 @@ export class ChilliCartComponent implements OnInit {
   }
 
   addDetails(user?) {
-    let userDetailModel = this.modalCtrl.create(ChilliDetailModelComponent, { user });
+    const data = user ? {
+      user: { ...user }
+    } : { user: null };
+    let userDetailModel = this.modalCtrl.create(ChilliDetailModelComponent, data);
     userDetailModel.present();
 
     userDetailModel.onDidDismiss((user) => {
