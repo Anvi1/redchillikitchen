@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from '../../models/menuitem';
 import { ChillyMenuListProvider } from '../../providers/chilly-menu-list';
 
@@ -10,7 +10,7 @@ import 'rxjs/add/observable/of';
 import { Router } from '@angular/router';
 import { RouteSharingService } from '../../services/service.pathconfig';
 import { Observable } from 'rxjs/Observable';
-import { ToastController } from 'ionic-angular';
+import { ToastController, Slides, LoadingController } from 'ionic-angular';
 import { ChillyImageProvider } from '../../providers/chilli-image.provider';
 
 /**
@@ -29,8 +29,10 @@ export class ChillyMenuList implements OnInit {
     const sharedData = this.sharedData.getSharedData('chillymenu')
     this.getMenuList(sharedData);
     this.carousels = this.images.getCarouselImages();
+    this.slides.startAutoplay();
   }
 
+  @ViewChild(Slides) slides: Slides;
   menulist: Array<MenuItem>;
   menulistCategories: Array<{
     category: string,
@@ -45,7 +47,8 @@ export class ChillyMenuList implements OnInit {
     private router: Router,
     private sharedData: RouteSharingService,
     public toastCtrl: ToastController,
-    private images: ChillyImageProvider
+    private images: ChillyImageProvider,
+    public loadingCtrl: LoadingController,
   ) {
   }
 
@@ -60,7 +63,7 @@ export class ChillyMenuList implements OnInit {
   }
 
   getMenuList(hasSharedData: Array<MenuItem>) {
-    let toast = this.toastCtrl.create({
+    const toast = this.toastCtrl.create({
       message: 'Our servers are not reachable! Please retry',
       showCloseButton: true,
       closeButtonText: "Retry",
@@ -70,15 +73,23 @@ export class ChillyMenuList implements OnInit {
       this.getMenuList(hasSharedData);
     });
 
+    const loading = this.loadingCtrl.create({
+      content: 'Please wait..'
+    });
+    loading.present();
+
     this.chillyMenuList
       .getMenuList()
       .catch((err: any, caught: Observable<MenuItem[]>) => {
-
         toast.present();
         return Observable.of(null);
       })
       .filter(fi => !!fi)
       .subscribe(menulist => {
+        loading.dismiss();
+        if (menulist && menulist.length) {
+          this.chillyMenuList.saveMenuForSession(menulist);
+        }
         this.initMenu(hasSharedData, menulist);
       })
 
@@ -136,6 +147,10 @@ export class ChillyMenuList implements OnInit {
       .forEach(mi => {
         mi.addedItems = this.findAddedNumbersToCart(mi.category);
       })
+
+    const addedMenuItems = this.menulist.filter(i => i.numbersAddedToCart > 0);
+    const myordersRoute = 'myorders';
+    this.sharedData.addSharedData(myordersRoute, addedMenuItems);
   }
 
 }

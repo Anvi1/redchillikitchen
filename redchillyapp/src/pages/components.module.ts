@@ -9,6 +9,7 @@ import { RouteSharingService, ApiMainService, ApiConfigService, ApiHttpService, 
 import { ChilliDetailModelComponent } from './chilli-detail-model/chilli-detail-model';
 import { ChillyOrderProvider } from '../providers/chilly-order';
 import { ChillyImageProvider } from '../providers/chilli-image.provider';
+import { MyOrdersComponent } from './my-orders/my-orders';
 
 @NgModule({
   entryComponents: [ChilliDetailModelComponent],
@@ -16,10 +17,11 @@ import { ChillyImageProvider } from '../providers/chilli-image.provider';
     ChillyHomeComponent,
     ChillyMenuList,
     ChilliCartComponent,
-    ChilliDetailModelComponent
+    ChilliDetailModelComponent,
+    MyOrdersComponent,
   ],
   imports: [CommonModule, IonicModule],
-  exports: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent],
+  exports: [ChillyHomeComponent, ChillyMenuList, ChilliCartComponent, MyOrdersComponent],
   providers: [
     ChillyMenuListProvider,
     RouteSharingService,
