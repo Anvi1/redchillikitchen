@@ -9,10 +9,10 @@
             <div class="chilly-item-container chilli-flex chilli-row">
                 <div class="chilli-item-details chilli-row chilli-flex chilly-space-between">
                     <div class="chilli-item-name">
-                        {{item.name}} <span class="numbers-order">X {{item.numbersAddedToCart}}</span>
+                        {{item.name}} <span class="numbers-order">X {{item.quantity}}</span>
                     </div>
                     <div class="chilli-item-price">
-                        {{(item.price*item.numbersAddedToCart) | currency:"₹":0}}
+                        {{(item.price*item.quantity) | currency:"₹":0}}
                     </div>
                 </div>
             </div>
