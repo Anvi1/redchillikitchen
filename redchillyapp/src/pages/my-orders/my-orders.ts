@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from '../../models/menuitem';
 
 /**
  * Generated class for the MyOrdersComponent component.
@@ -12,11 +13,12 @@ import { Component } from '@angular/core';
 })
 export class MyOrdersComponent {
 
-  text: string;
-
+  cartItems: Array<MenuItem>;
+  subTotal: number;
+  taxes;
+  gtotal;
   constructor() {
-    console.log('Hello MyOrdersComponent Component');
-    this.text = 'Hello World';
+    this.cartItems = [];
   }
 
 }

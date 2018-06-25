@@ -7,6 +7,7 @@ import { ChilliDetailModelComponent } from '../chilli-detail-model/chilli-detail
 import { ChillyUser } from '../../models/user';
 import { UserOrder } from '../../models/userorder';
 import { ChillyOrderProvider } from '../../providers/chilly-order';
+import { PastOrder } from '../../models/pastOrder';
 
 /**
  * Generated class for the ChilliCartComponent component.
@@ -126,8 +127,8 @@ export class ChilliCartComponent implements OnInit {
       this.user.name,
       this.user.contact,
       address,
-      45,
-      45,
+      this.gtotal,
+      this.taxesRateCgst,
       cartItems
     )
     let toast;
@@ -140,6 +141,7 @@ export class ChilliCartComponent implements OnInit {
           duration: 3000,
           position: 'bottom'
         });
+        this.saveLastOrder(userOrder);
         this.goBackToMenu(true);
       })
       .catch((err) => {
@@ -158,5 +160,9 @@ export class ChilliCartComponent implements OnInit {
         loading.dismiss();
         toast.present();
       })
+  }
+
+  saveLastOrder(userOrder) {
+    this.localStorageService.setChacheData('LATEST_ORDER', userOrder);
   }
 }
