@@ -1,3 +1,48 @@
 my-orders {
-
+    .down-arrow {
+        margin-right: 15px;
+    }
+    .chilli-item-details {
+        width: 100%;
+    }
+    .chilly-add-container {
+        width: 20%;
+    }
+    .chilli-item-name {
+        font-size: 17px;
+    }
+    .chilli-item-price {
+        font-weight: bolder;
+        padding-left: 5px;
+        color: #736565;
+    }
+    .chilli-item-description {
+        font-size: 11px;
+        color: #696365;
+    }
+    .view-menu {
+        background-color: #515151;
+    }
+    .sub-text-header {
+        color: #8e0000;
+    }
+    .strong-text-addr {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .user-address {
+        font-size: 14px;
+        font-weight: normal;
+        color: grey;
+    }
+    .grand-total {
+        min-height: 33px;
+        font-size: 19px;
+        color: black;
+        background-color: #9cd888;
+    }
+    .numbers-order {
+        color: #a59696;
+        font-size: 14px;
+    }
 }
