@@ -163,6 +163,11 @@ export class ChilliCartComponent implements OnInit {
   }
 
   saveLastOrder(userOrder) {
-    this.localStorageService.setChacheData('LATEST_ORDER', userOrder);
+    const userOrderWrapper = {
+      userOrder,
+      taxes: this.taxes,
+      subTotal: this.subTotal,
+    }
+    this.localStorageService.setChacheData('LATEST_ORDER', userOrderWrapper);
   }
 }
