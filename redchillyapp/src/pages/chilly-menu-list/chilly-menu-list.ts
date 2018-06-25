@@ -149,7 +149,7 @@ export class ChillyMenuList implements OnInit {
       })
 
     const addedMenuItems = this.menulist.filter(i => i.numbersAddedToCart > 0);
-    const myordersRoute = 'myorders';
+    const myordersRoute = 'chillymenu';
     this.sharedData.addSharedData(myordersRoute, addedMenuItems);
   }
 
