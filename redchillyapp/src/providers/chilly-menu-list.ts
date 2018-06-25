@@ -14,11 +14,18 @@ import { ApiMainService } from '../services/service.pathconfig';
 @Injectable()
 export class ChillyMenuListProvider {
   cartItems: Array<MenuItem>;
+  menulist: Array<MenuItem>;
   constructor(private apiMainService: ApiMainService) {
     this.cartItems = [];
   }
 
   getMenuList(): Observable<Array<MenuItem>> {
+
+    if (this.menulist
+      && this.menulist.length) {
+      return Observable.of(JSON.parse(JSON.stringify(this.menulist)));
+    }
+
     const menulist = this.apiMainService
       .getMenuList()
       .then((resArr) => {
@@ -44,5 +51,9 @@ export class ChillyMenuListProvider {
 
   getCartItems() {
     return this.cartItems;
+  }
+
+  saveMenuForSession(menulist) {
+    this.menulist = menulist
   }
 }

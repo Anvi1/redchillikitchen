@@ -1,6 +1,6 @@
 <!-- Generated template for the ChillyHomeComponent component -->
 <div class="chilli-carousel">
-    <ion-slides>
+    <ion-slides autoplay="5000">
         <ion-slide *ngFor="let image of carousels|async">
             <img [src]="image" class="chilli-c-image">
         </ion-slide>

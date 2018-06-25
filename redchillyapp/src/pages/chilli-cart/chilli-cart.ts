@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouteSharingService, LocalstorageService } from '../../services/service.pathconfig';
 import { MenuItem } from '../../models/menuitem';
 import { Router } from '@angular/router';
-import { ModalController, ToastController } from 'ionic-angular';
+import { ModalController, ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { ChilliDetailModelComponent } from '../chilli-detail-model/chilli-detail-model';
 import { ChillyUser } from '../../models/user';
 import { UserOrder } from '../../models/userorder';
@@ -33,7 +33,9 @@ export class ChilliCartComponent implements OnInit {
     public modalCtrl: ModalController,
     private orderProvider: ChillyOrderProvider,
     public toastCtrl: ToastController,
-    private localStorageService: LocalstorageService
+    private localStorageService: LocalstorageService,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController
   ) { }
 
   ngOnInit(): void {
@@ -75,7 +77,34 @@ export class ChilliCartComponent implements OnInit {
     })
   }
 
+  confirmPlacingOrder() {
+    const prompt = this.alertCtrl.create({
+      title: 'Place Order',
+      message: "Confirm to place your order",
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: data => {
+            this.placeOrder();
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
   placeOrder() {
+    const loading = this.loadingCtrl.create({
+      content: 'Please wait..'
+    });
+    loading.present();
+
     const address = `${this.user.addr1} ${this.user.addr2}`;
     const cartItems: Array<{
       name: string,
@@ -126,6 +155,7 @@ export class ChilliCartComponent implements OnInit {
         });
       })
       .then(() => {
+        loading.dismiss();
         toast.present();
       })
   }
