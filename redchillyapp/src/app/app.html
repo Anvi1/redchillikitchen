@@ -12,11 +12,19 @@
 </ion-menu>
 <div #chilliContent class="chilli-full-height">
     <ion-header>
-        <div class="rck-header" menuToggle>
-            <div class="rck-hamburger-dimension"></div>
-            <div class="rck-hamburger-dimension"></div>
-            <div class="rck-hamburger-dimension"></div>
+        <div class="rck-header header-height chilli-flex chilli-align-center">
+            <div *ngIf="!showHamb" class="chilli-flex chilli-align-center back-area" (click)="goBack()">
+                <div class="arrow-padding-left">
+                    <i class="left-arrow header-back"></i>
+                </div>
+            </div>
+            <div *ngIf="showHamb" menuToggle>
+                <div class="rck-hamburger-dimension"></div>
+                <div class="rck-hamburger-dimension"></div>
+                <div class="rck-hamburger-dimension"></div>
+            </div>
         </div>
+
     </ion-header>
     <ion-content class="content-bg">
         <router-outlet></router-outlet>

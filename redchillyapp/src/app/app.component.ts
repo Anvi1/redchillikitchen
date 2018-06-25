@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
-
+export class MyApp implements OnInit {
+  showHamb: boolean;
+  ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showHamb = event.url === "/chillymenu";
+      }
+    });
+  }
   constructor(
     platform: Platform,
     statusBar: StatusBar,
@@ -20,6 +27,10 @@ export class MyApp {
       splashScreen.hide();
       this.router.navigate(['/chillymenu'])
     });
+  }
+
+  goBack() {
+    window.history.back();
   }
 }
 
