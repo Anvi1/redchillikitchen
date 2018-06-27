@@ -26,6 +26,7 @@ export class HomePage implements OnInit {
 
     this.getVar('CGST').then(val => this.cgst = val);
     this.getVar('SGST').then(val => this.sgst = val);
+    this.getVar('ISCOOKING').then(val => this.iscooking = val);
   }
   changeStatus(val) {
     this.http.put(`${this.varRoute}/projectvariable`, {

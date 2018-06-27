@@ -9,17 +9,23 @@
 <ion-content padding>
     <button ion-button (click)="changeStatus(false)" *ngIf="iscooking">Go Offline</button>
     <button ion-button (click)="changeStatus(true)" *ngIf="!iscooking">Go Online</button>
-    <hr> SET Taxes :
-    <div>
+    <span style="
+    font-size:  20px;
+   
+    color: #2abf21;
+" *ngIf="iscooking"> Kitchen is now accepting orders!!</span>
+    <hr>
+    <div *ngIf="!iscooking">
+        SET Taxes :
         <input type="number" [(ngModel)]="cgst" /> <button ion-button (click)="setVar('CGST',cgst)">SET CGST</button>
     </div>
-    <div>
+    <div *ngIf="!iscooking">
         <input type="number" [(ngModel)]="sgst" /> <button ion-button (click)="setVar('SGST',sgst)">SET SGST</button>
     </div>
     <hr>
     <button ion-button (click)="deleteMenu()" *ngIf="!iscooking">Delete old menu</button>
     <hr>
-    <input ion-button *ngIf="!iscooking" type="file" name="menu" id="menu" #elem (change)="fileLoad(elem.files[0])">
+    <input *ngIf="!iscooking" type="file" name="menu" id="menu" #elem (change)="fileLoad(elem.files[0])">
 
     <button ion-button (click)="setMenu()" *ngIf="!iscooking">Upload new menu</button>
     <hr>
@@ -42,5 +48,10 @@
                 <div class="divTableCell">{{item.category}}</div>
             </div>
         </div>
+    </div>
+
+
+    <div name="ordersDiv">
+
     </div>
 </ion-content>
