@@ -31,4 +31,9 @@ export class ApiMainService {
     return this.apiHttpService
       .REQUEST(this.apiConfigService.apiEndPointObj['placeOrder'], paylaodObj)
   }
+
+  getVariableList() {
+    return this.apiHttpService
+      .REQUEST(this.apiConfigService.apiEndPointObj['variableList'])
+  }
 }

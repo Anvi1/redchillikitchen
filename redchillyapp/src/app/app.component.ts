@@ -8,11 +8,13 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: 'app.html'
 })
 export class MyApp implements OnInit {
+  disableIcon: boolean;
   showHamb: boolean;
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.showHamb = event.url === "/chillymenu";
+        this.disableIcon = event.url === "/chillycart";
       }
     });
   }

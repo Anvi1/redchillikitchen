@@ -20,5 +20,11 @@ export class ApiConfigService {
       url: `${this.baseUrl}/api/order`,
       method: 'POST'
     };
+
+    this.apiEndPointObj['variableList'] = {
+      url: `${this.baseUrl}/api/projectvariable`,
+      method: 'GET'
+    };
+
   }
 }

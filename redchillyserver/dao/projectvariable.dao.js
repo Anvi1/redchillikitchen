@@ -34,6 +34,24 @@ const initvar = {
     "varialble_name": "ISCOOKING",
     "variable_value": false
 }
+const CGST = {
+    "varialble_name": "CGST",
+    "variable_value": 0
+}
+const SGST = {
+    "varialble_name": "SGST",
+    "variable_value": 0
+}
+getVariableValue(CGST.varialble_name).then((val) => {
+    if (!val) {
+        setVariable(CGST);
+    }
+})
+getVariableValue(SGST.varialble_name).then((val) => {
+    if (!val) {
+        setVariable(SGST);
+    }
+})
 updateVariableValue(initvar).then((err, result) => {
     if (!result && !err) {
         setVariable(initvar)

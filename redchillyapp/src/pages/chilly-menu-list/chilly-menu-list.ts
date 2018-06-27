@@ -12,6 +12,7 @@ import { RouteSharingService } from '../../services/service.pathconfig';
 import { Observable } from 'rxjs/Observable';
 import { ToastController, Slides, LoadingController } from 'ionic-angular';
 import { ChillyImageProvider } from '../../providers/chilli-image.provider';
+import { ChillyVariableProvider } from '../../providers/chilli-variables';
 
 /**
  * Generated class for the ChillyMenuList component.
@@ -26,6 +27,7 @@ import { ChillyImageProvider } from '../../providers/chilli-image.provider';
 export class ChillyMenuList implements OnInit {
 
   ngOnInit(): void {
+    this.getVariableList();
     const sharedData = this.sharedData.getSharedData('chillymenu')
     this.getMenuList(sharedData);
     this.carousels = this.images.getCarouselImages();
@@ -49,6 +51,7 @@ export class ChillyMenuList implements OnInit {
     public toastCtrl: ToastController,
     private images: ChillyImageProvider,
     public loadingCtrl: LoadingController,
+    private variableList: ChillyVariableProvider,
   ) {
   }
 
@@ -62,6 +65,27 @@ export class ChillyMenuList implements OnInit {
     this.willShowCartButton();
   }
 
+  getVariableList() {
+    const loading = this.loadingCtrl.create({
+      content: 'Please wait..'
+    });
+    loading.present();
+
+    const toast = this.toastCtrl.create({
+      message: 'Our servers are not reachable! Please retry',
+      showCloseButton: true,
+      closeButtonText: "Retry",
+      position: 'bottom'
+    });
+
+    this.variableList.getValiableList()
+      .catch((err: any) => {
+        toast.present();
+      })
+      .then(() => {
+        loading.dismiss();
+      })
+  }
   getMenuList(hasSharedData: Array<MenuItem>) {
     const toast = this.toastCtrl.create({
       message: 'Our servers are not reachable! Please retry',

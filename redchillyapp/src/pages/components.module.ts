@@ -10,6 +10,7 @@ import { ChilliDetailModelComponent } from './chilli-detail-model/chilli-detail-
 import { ChillyOrderProvider } from '../providers/chilly-order';
 import { ChillyImageProvider } from '../providers/chilli-image.provider';
 import { MyOrdersComponent } from './my-orders/my-orders';
+import { ChillyVariableProvider } from '../providers/chilli-variables';
 
 @NgModule({
   entryComponents: [ChilliDetailModelComponent],
@@ -30,7 +31,8 @@ import { MyOrdersComponent } from './my-orders/my-orders';
     ApiHttpService,
     ChillyOrderProvider,
     LocalstorageService,
-    ChillyImageProvider
+    ChillyImageProvider,
+    ChillyVariableProvider,
   ]
 })
 export class PagesModule { }
