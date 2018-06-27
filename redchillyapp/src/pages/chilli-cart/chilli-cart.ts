@@ -7,6 +7,7 @@ import { ChilliDetailModelComponent } from '../chilli-detail-model/chilli-detail
 import { ChillyUser } from '../../models/user';
 import { UserOrder } from '../../models/userorder';
 import { ChillyOrderProvider } from '../../providers/chilly-order';
+import { ChillyVariableProvider } from '../../providers/chilli-variables';
 
 /**
  * Generated class for the ChilliCartComponent component.
@@ -35,7 +36,8 @@ export class ChilliCartComponent implements OnInit {
     public toastCtrl: ToastController,
     private localStorageService: LocalstorageService,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private variableList: ChillyVariableProvider,
   ) { }
 
   ngOnInit(): void {
@@ -50,8 +52,8 @@ export class ChilliCartComponent implements OnInit {
         .map(mi => mi.numbersAddedToCart * mi.price)
         .reduce((fi, si) => fi + si, 0);
     }
-    this.taxesRateCgst = 5;
-    this.taxesRateSgst = 5;
+    this.taxesRateCgst = this.variableList.getVariable('CGST');
+    this.taxesRateSgst = this.variableList.getVariable('SGST');
     this.taxes = this.subTotal * ((this.taxesRateCgst + this.taxesRateSgst) / 100);
     this.gtotal = this.subTotal + this.taxes;
   }

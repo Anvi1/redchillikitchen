@@ -27,4 +27,17 @@ export class ChillyVariableProvider {
         }
       })
   }
+
+  getVariable(name) {
+    if (!name) {
+      return null;
+    }
+    const found = this.variableList.find(i => i.varialble_name === name);
+
+    if (!found) {
+      return null;
+    }
+
+    return found.variable_value;
+  }
 }

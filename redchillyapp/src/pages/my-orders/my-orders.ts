@@ -40,4 +40,8 @@ export class MyOrdersComponent implements OnInit {
     }
   }
 
+  goBack() {
+    window.history.back();
+  }
+
 }

@@ -1,6 +1,12 @@
 <!-- Generated template for the MyOrdersComponent component -->
-<div *ngIf="!cartItems || !cartItems.length">
-    No orders yet!
+<div class="" *ngIf="!cartItems || !cartItems.length">
+    <div class="no-orders">
+        No orders yet!
+        <div>
+            <button ion-button (click)="goBack()" padding-left padding-right>Order Now</button>
+        </div>
+    </div>
+
 </div>
 <div *ngIf="cartItems && cartItems.length">
     <h1 padding-left>Your Last Order</h1>
