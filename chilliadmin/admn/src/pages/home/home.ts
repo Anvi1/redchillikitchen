@@ -9,8 +9,11 @@ declare var XLSX;
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit {
+  orderList: any;
+  lastfetchTime: any;
   ngOnInit(): void {
     this.setupInitVal();
+    this.getOrders();
   }
   iscooking: boolean;
   menu;
@@ -20,6 +23,7 @@ export class HomePage implements OnInit {
   constructor(public navCtrl: NavController,
     private http: Http) {
     this.menu = [];
+    this.orderList = [];
   }
 
   setupInitVal() {
@@ -85,6 +89,7 @@ export class HomePage implements OnInit {
       .subscribe(uy => {
         if (uy && uy.ok) {
           alert("New menu is set!");
+          window.location.reload();
         }
       })
   }
@@ -125,6 +130,29 @@ export class HomePage implements OnInit {
     };
 
     reader.readAsBinaryString(file);
-  };
+  }
+
+  getOrders() {
+    let todaysDate = new Date();
+    todaysDate.setMinutes(0);
+    todaysDate.setSeconds(0);
+    todaysDate.setHours(0);
+
+    todaysDate.setDate(todaysDate.getDate() - 1);
+    let timestamp = 0;
+    if (!this.lastfetchTime) {
+      timestamp = todaysDate.getTime();
+    } else {
+      timestamp = this.lastfetchTime;
+    }
+    this.lastfetchTime = timestamp;
+    this.http.get(`${this.varRoute}/order/latestOrders/${timestamp}`)
+      .subscribe(uy => {
+        if (uy && uy.ok) {
+          const orderList = uy.json();
+          this.orderList.concat(orderList);
+        }
+      })
+  }
 }
 
