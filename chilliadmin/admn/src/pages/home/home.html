@@ -9,11 +9,21 @@
 <ion-content padding>
     <button ion-button (click)="changeStatus(false)" *ngIf="iscooking">Go Offline</button>
     <button ion-button (click)="changeStatus(true)" *ngIf="!iscooking">Go Online</button>
+    <hr> SET Taxes :
+    <div>
+        <input type="number" [(ngModel)]="cgst" /> <button ion-button (click)="setVar('CGST',cgst)">SET CGST</button>
+    </div>
+    <div>
+        <input type="number" [(ngModel)]="sgst" /> <button ion-button (click)="setVar('SGST',sgst)">SET SGST</button>
+    </div>
+    <hr>
+    <button ion-button (click)="deleteMenu()" *ngIf="!iscooking">Delete old menu</button>
+    <hr>
+    <input ion-button *ngIf="!iscooking" type="file" name="menu" id="menu" #elem (change)="fileLoad(elem.files[0])">
 
+    <button ion-button (click)="setMenu()" *ngIf="!iscooking">Upload new menu</button>
     <hr>
-    <button ion-button (click)="addItem()" *ngIf="!iscooking">Add Menu Item</button>
-    <hr>
-    <div class="divTable">
+    <div class="divTable" *ngIf="!iscooking">
         <div class="divTableBody">
             <div class="divTableRow">
                 <div class="divTableCell">&nbsp;name</div>
@@ -24,17 +34,12 @@
                 <div class="divTableCell">&nbsp;category</div>
             </div>
             <div class="divTableRow" *ngFor="let item of menu">
-                <div class="divTableCell"><input type="text" [(ngModel)]="item.name" /></div>
-                <div class="divTableCell"><input type="text" /></div>
-                <div class="divTableCell"><input type="text" /></div>
-                <div class="divTableCell"><input type="text" /></div>
+                <div class="divTableCell">{{item.name}}</div>
+                <div class="divTableCell">{{item.price}}</div>
+                <div class="divTableCell">{{item.isVeg}}</div>
+                <div class="divTableCell">{{item.description}}</div>
 
-                <div class="divTableCell"><select name="cars">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="fiat">Fiat</option>
-                  <option value="audi">Audi</option>
-                </select></div>
+                <div class="divTableCell">{{item.category}}</div>
             </div>
         </div>
     </div>

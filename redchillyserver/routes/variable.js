@@ -24,7 +24,10 @@ router.get('/getvariable/:varname', async(req, res, next) => {
     try {
         let varname = req.params.varname;
         let variableValue = await variableService.getVariableValue(varname);
-        success.success200(res, variableValue);
+        success.success200(res, {
+            variableValue,
+            varname
+        });
     } catch (error) {
         errors.hasError500(req, res);
     }
