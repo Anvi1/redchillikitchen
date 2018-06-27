@@ -7,7 +7,6 @@ import { ChilliDetailModelComponent } from '../chilli-detail-model/chilli-detail
 import { ChillyUser } from '../../models/user';
 import { UserOrder } from '../../models/userorder';
 import { ChillyOrderProvider } from '../../providers/chilly-order';
-import { PastOrder } from '../../models/pastOrder';
 
 /**
  * Generated class for the ChilliCartComponent component.

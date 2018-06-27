@@ -82,6 +82,7 @@ export class ChillyMenuList implements OnInit {
       .getMenuList()
       .catch((err: any, caught: Observable<MenuItem[]>) => {
         toast.present();
+        loading.dismiss();
         return Observable.of(null);
       })
       .filter(fi => !!fi)
